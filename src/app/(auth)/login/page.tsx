@@ -6,13 +6,14 @@ import Link from "next/link";
 import Button from "@/components/Button";
 import Label from "@/components/Label";
 import Input from "@/components/Input";
+import { guardarToken } from "@/lib/token";
 
 interface FormData {
   email: string;
   password: string;
 }
 
-export default function page() {
+export default function Page() {
   const [formData, setFormData] = useState<FormData>({
     email: "",
     password: "",
@@ -24,7 +25,12 @@ export default function page() {
     const res = await login(formData);
 
     if (res) {
-      router.push("/");
+      guardarToken(res.token);
+      if (res.response.data.role === "client") {
+        router.push("/");
+      } else {
+        router.push("/admin");
+      }
     }
   };
 
@@ -36,7 +42,7 @@ export default function page() {
   };
 
   return (
-    <div>
+    <div className="">
       <form className="flex flex-col gap-6" onSubmit={handleSubmit}>
         <h1 className="text-neutral-800 text-center text-2xl">Login</h1>
         <Label>
@@ -62,7 +68,7 @@ export default function page() {
           no tienes una cuenta?{" "}
           <Link className="text-orange-600" href={"/signup"}>
             Registrate
-          </Link>{" "}
+          </Link>
         </p>
       </form>
     </div>

@@ -13,7 +13,7 @@ interface FormData {
   password: string;
 }
 
-export default function page() {
+export default function Page() {
   const [formData, setFormData] = useState<FormData>({
     name: "",
     email: "",
@@ -24,10 +24,10 @@ export default function page() {
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    const loginSuccess = await signup(formData);
+    const user = await signup(formData);
 
-    if (loginSuccess) {
-      router.push("/");
+    if (user) {
+      router.push("/login");
     }
   };
 

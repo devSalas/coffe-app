@@ -1,65 +1,50 @@
-import {guardarToken, recuperarToken} from '@/utils/token';
+const URL = "https://cafe-app-kj9q.onrender.com"
 
-const URL = ""
-
-export const login = async (data: any): Promise<boolean> => {
+export const login = async (userData: any) => {
   try {
     const opciones = {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify(data),
+      body: JSON.stringify(userData),
     };
 
-    const res = await fetch(`${URL}/login`, opciones);
-    const result = await res.json();
+    const res = await fetch(`${URL}/auth/login`, opciones);
 
-    if (result.status === 400) {
-      throw new Error("");
-    }
+    if (!res.ok) throw new Error("");
 
-    const token = result.token;
-    // Guardar el token en localStorage
-    guardarToken(token)
+    const data = await res.json();
+    return data
 
-    return true;
   } catch (err) {
-    return false;
+    return null;
   }
 };
 
-export const signup = async (data: any): Promise<boolean> => {
+export const signup = async (userData: any)=> {
   try {
     const opciones = {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify(data),
+      body: JSON.stringify(userData),
     };
 
-    const res = await fetch(`${URL}/signup`, opciones);
-    const result = await res.json();
+    const res = await fetch(`${URL}/auth/signup`, opciones);
 
-    if (result.status === 400) {
-      throw new Error("");
-    }
+    if (!res.ok) throw new Error("");
+    const data = await res.json();
+    return data;
 
-    const token = result.token;
-    // Guardar el token en localStorage
-    guardarToken(token)
-
-    return true;
   } catch (err) {
-    return false;
+    return null;
   }
 };
 
-export const verifySesion = async () => {
+export const verifyToken = async (token: string) => {
   try {
-    const token = recuperarToken()
-
     const opciones = {
       method: "GET",
       headers: {
@@ -67,15 +52,12 @@ export const verifySesion = async () => {
       }
     };
 
-    const res = await fetch(`${URL}/auth`, opciones);
-    const result = await res.json();
+    const res = await fetch(`${URL}/auth/token`, opciones);
+    if (!res.ok) throw new Error("");
+    const data = await res.json();
 
-    if (result.status === 400) {
-      throw new Error("");
-    }
-
-    return true;
+    return data;
   } catch (err) {
-    return false;
+    return null;
   }
 }
