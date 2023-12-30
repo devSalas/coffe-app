@@ -61,3 +61,21 @@ export const verifyToken = async (token: string) => {
     return null;
   }
 }
+
+
+export const getMenus = async () => {
+  try {
+    const res = await fetch(`${URL}/menus`);
+
+    if (!res.ok) {
+      throw new Error(`Error al obtener menús. Estado: ${res.status} ${res.statusText}`);
+    }
+
+    const data = await res.json();
+
+    return data;
+  } catch (err) {
+    console.error('Error en getMenus:', err);
+    throw new Error("Error al obtener menús. Por favor, inténtalo de nuevo más tarde.");
+  }
+};
