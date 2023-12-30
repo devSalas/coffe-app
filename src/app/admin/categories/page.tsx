@@ -8,9 +8,9 @@ import TableCell from "@/components/Table/TableCell";
 export default async function Page() {
   const res = await getCategories();
 
-  const menus: CategoryI[] = res.data;
+  const categories: CategoryI[] = res.data;
 
-  // console.log(menus);
+  // console.log(categories);
 
   return (
     <div>
@@ -24,7 +24,7 @@ export default async function Page() {
             </tr>
           </thead>
           <tbody>
-            {menus.map(({ id_category, name }) => (
+            {categories.map(({ id_category, name }) => (
               <tr key={id_category} className="border-b">
                 <TableCell>{id_category}</TableCell>
                 <TableCell>{name}</TableCell>

@@ -11,8 +11,8 @@ export default function layout({ children }: { children: React.ReactNode }) {
         <Link className="text-orange-600" href={"/admin/menus"}>
           Menus
         </Link>
-        <Link className="text-orange-600" href={"/admin/menus"}>
-          Orders
+        <Link className="text-orange-600" href={"/admin/orders"}>
+          Ordenes
         </Link>
         <Link className="text-orange-600" href={"/admin/categories"}>
           Categorias
