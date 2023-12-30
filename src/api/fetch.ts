@@ -79,3 +79,20 @@ export const getMenus = async () => {
     throw new Error("Error al obtener menús. Por favor, inténtalo de nuevo más tarde.");
   }
 };
+
+export const getCategories = async () => {
+  try {
+    const res = await fetch(`${URL}/categories`);
+
+    if (!res.ok) {
+      throw new Error(`Error al obtener categorias. Estado: ${res.status} ${res.statusText}`);
+    }
+
+    const data = await res.json();
+
+    return data;
+  } catch (err) {
+    console.error('Error en getCategories:', err);
+    throw new Error("Error al obtener categorias. Por favor, inténtalo de nuevo más tarde.");
+  }
+};

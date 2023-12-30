@@ -1,37 +1,33 @@
-import { getMenus } from "@/api/fetch";
+import { getCategories } from "@/api/fetch";
 import React from "react";
-import { MenuI } from "@/types";
+import { CategoryI } from "@/types";
 import Table from "@/components/Table/Table";
 import TableHead from "@/components/Table/TableHead";
 import TableCell from "@/components/Table/TableCell";
 
 export default async function Page() {
-  const res = await getMenus();
+  const res = await getCategories();
 
-  const menus: MenuI[] = res.data;
+  const menus: CategoryI[] = res.data;
 
   // console.log(menus);
 
   return (
     <div>
-      <h1 className="text-2xl py-4">Menus</h1>
+      <h1 className="text-2xl py-4">Categorias</h1>
       <section>
         <Table>
           <thead>
             <tr className="bg-gray-100">
               <TableHead>ID</TableHead>
               <TableHead>Name</TableHead>
-              <TableHead>Description</TableHead>
-              <TableHead>Price</TableHead>
             </tr>
           </thead>
           <tbody>
-            {menus.map(({ id_menu, name, description, price }) => (
-              <tr key={id_menu} className="border-b">
-                <TableCell>{id_menu}</TableCell>
+            {menus.map(({ id_category, name }) => (
+              <tr key={id_category} className="border-b">
+                <TableCell>{id_category}</TableCell>
                 <TableCell>{name}</TableCell>
-                <TableCell>{description}</TableCell>
-                <TableCell>{price}</TableCell>
               </tr>
             ))}
           </tbody>
