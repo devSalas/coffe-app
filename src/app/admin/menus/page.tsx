@@ -4,6 +4,7 @@ import { MenuI } from "@/types";
 import Table from "@/components/Table/Table";
 import TableHead from "@/components/Table/TableHead";
 import TableCell from "@/components/Table/TableCell";
+import Link from "next/link";
 
 export default async function Page() {
   const res = await getMenus();
@@ -15,6 +16,9 @@ export default async function Page() {
   return (
     <div>
       <h1 className="text-2xl py-4">Menus</h1>
+      <Link className="text-orange-500" href={"/admin/menus/add"}>
+        Crea un menu
+      </Link>
       <section>
         <Table>
           <thead>

@@ -113,3 +113,30 @@ export const getOrders = async () => {
     throw new Error("Error al obtener ordernes. Por favor, inténtalo de nuevo más tarde.");
   }
 };
+
+
+export const addMenu = async (menu:any, token:string) => {
+  try {
+    const opciones = {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        'Authorization': `Bearer ${token}`,
+      },
+      body: JSON.stringify(menu),
+    };
+
+    const res = await fetch(`${URL}/menus`, opciones);
+
+    if (!res.ok) {
+      throw new Error(`Error al crear un menu. Estado: ${res.status} ${res.statusText}`);
+    }
+
+    const data = await res.json();
+
+    return data;
+  } catch (err) {
+    console.error('Error al crear un menu:', err);
+    throw new Error("Error al crear un menu. Por favor, inténtalo de nuevo más tarde.");
+  }
+};
