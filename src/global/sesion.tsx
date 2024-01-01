@@ -20,7 +20,12 @@ export const SesionProvider = ({ children }: { children: React.ReactNode }) => {
       setToken(res.token);
       setUser(res.data);
       setIsAuthenticated(true);
-      router.push("/");
+      console.log(res.data.role);
+      if (res.data.role === "admin") {
+        router.push("/admin");
+      } else {
+        router.push("/");
+      }
     }
   };
 

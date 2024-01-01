@@ -3,12 +3,11 @@ import React, { useState, useEffect } from "react";
 import Button from "@/components/Button";
 import Label from "@/components/Label";
 import Input from "@/components/Input";
-import { addMenu, getCategories } from "@/api/fetch";
+import { getMenu, getCategories, editMenu } from "@/api/fetch";
 import toast, { Toaster } from "react-hot-toast";
 import { useSesion } from "@/global/sesion";
 import Link from "next/link";
-import Select from "@/components/Select";
-import Textarea from "@/components/Textarea";
+import { useParams } from "next/navigation";
 
 export default function Page() {
   const [menu, setMenu] = useState({
@@ -18,9 +17,16 @@ export default function Page() {
     category_id: 0,
   });
   const [categories, setCategories] = useState([]);
+
   const { token } = useSesion();
+  const params = useParams();
+  const id = Array.isArray(params) ? params[0].id : params.id;
 
   useEffect(() => {
+    getMenu(id).then((res) => {
+      setMenu(res.data);
+    });
+
     getCategories().then((res) => {
       setCategories(res.data);
     });
@@ -29,19 +35,18 @@ export default function Page() {
   const handleSubmit = async (e: any) => {
     e.preventDefault();
 
-    const { name, description, price, category_id } = e.target;
-
-    const menu = {
-      name: name.value,
-      description: description.value,
-      price: Number(price.value),
-      category_id: Number(category_id.value),
+    const newMenu = {
+      name: menu.name,
+      description: menu.description,
+      price: Number(menu.price),
+      category_id: Number(menu.category_id),
     };
+    console.log(id, newMenu, token);
 
-    const res = await addMenu(menu, token);
+    const res = await editMenu(id, newMenu, token);
     console.log(res);
 
-    toast.success("menu creado");
+    toast.success("menu guardado");
   };
 
   const handleChange = (e: any) => {
@@ -50,7 +55,7 @@ export default function Page() {
   };
 
   return (
-    <div className="">
+    <>
       <header className="flex justify-between items-center gap-4 py-2">
         <Link
           className="text-neutral-800 hover:text-orange-600 text-lg flex items-center gap-2 py-2 transition-colors"
@@ -85,42 +90,42 @@ export default function Page() {
         </Label>
         <Label>
           Descripcion
-          <Textarea
+          <textarea
+            className="bg-orange-100 focus:outline-1 focus:bg-orange-200 rounded py-3 px-4 outline-orange-300 hover:bg-orange-200"
             name="description"
             cols={30}
             rows={5}
             value={menu.description}
             onChange={handleChange}
-          ></Textarea>
+          ></textarea>
         </Label>
-        <div className="grid grid-cols-2 gap-4">
-          <Label>
-            Precio
-            <Input
-              type="number"
-              name="price"
-              value={menu.price}
-              onChange={handleChange}
-            />
-          </Label>
-          <Label>
-            Categorias
-            <Select
-              name="category_id"
-              value={menu.category_id}
-              onChange={handleChange}
-            >
-              {categories?.map(({ id_category, name }: any) => (
-                <option value={id_category} key={id_category}>
-                  {name}
-                </option>
-              ))}
-            </Select>
-          </Label>
-        </div>
-        <Button>Crear menu</Button>
+        <Label>
+          Precio
+          <Input
+            type="number"
+            name="price"
+            value={menu.price}
+            onChange={handleChange}
+          />
+        </Label>
+        <Label>
+          Categorias
+          <select
+            className="bg-orange-100 focus:outline-1 focus:bg-orange-200 rounded py-3 px-4 outline-orange-300 hover:bg-orange-200"
+            name="category_id"
+            value={menu.category_id}
+            onChange={handleChange}
+          >
+            {categories?.map(({ id_category, name }: any) => (
+              <option value={id_category} key={id_category}>
+                {name}
+              </option>
+            ))}
+          </select>
+        </Label>
+        <Button>Editar</Button>
         <Toaster />
       </form>
-    </div>
+    </>
   );
 }

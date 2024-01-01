@@ -19,7 +19,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={inter.className}>
         <SesionProvider>
-          <main className="px-8">{children}</main>
+          <main className="md:px-8 px-4">{children}</main>
         </SesionProvider>
       </body>
     </html>

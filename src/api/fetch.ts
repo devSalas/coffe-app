@@ -64,64 +64,56 @@ export const verifyToken = async (token: string) => {
 
 
 export const getMenus = async () => {
-  try {
-    const res = await fetch(`${URL}/menus`);
+    const res = await fetch(`${URL}/menus`, {cache: "no-store"});
 
     if (!res.ok) {
-      throw new Error(`Error al obtener menús. Estado: ${res.status} ${res.statusText}`);
+      throw new Error("error al obtener los menus");
     }
 
     const data = await res.json();
-
     return data;
-  } catch (err) {
-    console.error('Error en getMenus:', err);
-    throw new Error("Error al obtener menús. Por favor, inténtalo de nuevo más tarde.");
-  }
+};
+
+export const getMenu = async (idMenu: string) => {
+    const res = await fetch(`${URL}/menus/${idMenu}`, {cache: "no-store"});
+
+    if (!res.ok) {
+      throw new Error("error al obtener los menus");
+    }
+
+    const data = await res.json();
+    return data;
 };
 
 export const getCategories = async () => {
-  try {
     const res = await fetch(`${URL}/categories`);
 
     if (!res.ok) {
-      throw new Error(`Error al obtener categorias. Estado: ${res.status} ${res.statusText}`);
+      throw new Error("error al obtener las categorias");
     }
 
     const data = await res.json();
-
     return data;
-  } catch (err) {
-    console.error('Error en getCategories:', err);
-    throw new Error("Error al obtener categorias. Por favor, inténtalo de nuevo más tarde.");
-  }
 };
 
 export const getOrders = async () => {
-  try {
     const res = await fetch(`${URL}/orders`);
 
     if (!res.ok) {
-      throw new Error(`Error al obtener ordernes. Estado: ${res.status} ${res.statusText}`);
+      throw new Error("error al obtener las ordenes");
     }
 
     const data = await res.json();
-
     return data;
-  } catch (err) {
-    console.error('Error en getCategories:', err);
-    throw new Error("Error al obtener ordernes. Por favor, inténtalo de nuevo más tarde.");
-  }
 };
 
 
 export const addMenu = async (menu:any, token:string) => {
-  try {
     const opciones = {
       method: "POST",
       headers: {
-        "Content-Type": "application/json",
         'Authorization': `Bearer ${token}`,
+        "Content-Type": "application/json",
       },
       body: JSON.stringify(menu),
     };
@@ -129,14 +121,47 @@ export const addMenu = async (menu:any, token:string) => {
     const res = await fetch(`${URL}/menus`, opciones);
 
     if (!res.ok) {
-      throw new Error(`Error al crear un menu. Estado: ${res.status} ${res.statusText}`);
+      throw new Error("error al añadir un menu");
     }
 
     const data = await res.json();
-
     return data;
-  } catch (err) {
-    console.error('Error al crear un menu:', err);
-    throw new Error("Error al crear un menu. Por favor, inténtalo de nuevo más tarde.");
-  }
+};
+
+export const deleteMenu = async (menuId:string, token:string) => {
+    const opciones = {
+      method: "DELETE",
+      headers: {
+        'Authorization': `Bearer ${token}`,
+      }
+    };
+
+    const res = await fetch(`${URL}/menus/${menuId}`, opciones);
+
+    if (!res.ok) {
+      throw new Error("error al eliminar un menu");
+    }
+
+    const data = await res.json();
+    return data;
+};
+
+export const editMenu = async (menuId:string, menu:any, token:string) => {
+    const opciones = {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+        'Authorization': `Bearer ${token}`,
+      },
+      body: JSON.stringify(menu),
+    };
+
+    const res = await fetch(`${URL}/menus/${menuId}`, opciones);
+
+    if (!res.ok) {
+      throw new Error("error al editar un menu");
+    }
+
+    const data = await res.json();
+    return data;
 };
