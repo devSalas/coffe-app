@@ -66,11 +66,11 @@ export default function Page() {
         <Label>
           Descripcion
           <textarea
-            className="bg-orange-100 rounded"
+            className="bg-orange-100 p-2 rounded"
             name="description"
             id=""
             cols={30}
-            rows={10}
+            rows={5}
             onChange={handleInputChange}
           >
             {formData.description}

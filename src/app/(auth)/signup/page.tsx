@@ -1,11 +1,10 @@
 "use client";
 import React, { useState } from "react";
-import { signup } from "@/api/fetch";
-import { useRouter } from "next/navigation";
 import Link from "next/link";
 import Button from "@/components/Button";
 import Input from "@/components/Input";
 import Label from "@/components/Label";
+import { useSesion } from "@/global/sesion";
 
 interface FormData {
   name: string;
@@ -19,16 +18,12 @@ export default function Page() {
     email: "",
     password: "",
   });
-  const router = useRouter();
+
+  const { registrarse } = useSesion();
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-
-    const user = await signup(formData);
-
-    if (user) {
-      router.push("/login");
-    }
+    registrarse(formData);
   };
 
   const handleInputChange = (

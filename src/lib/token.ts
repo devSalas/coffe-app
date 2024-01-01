@@ -7,10 +7,14 @@ export const guardarToken = (token: string) => {
 export const recuperarToken = () => {
   const data = localStorage.getItem(KEY);
 
-  if (data) {
-    const token = JSON.parse(data);
-    return token
+  if (data === null) {
+    return null;
   }
 
-  return null
+  const token = JSON.parse(data);
+  return token;
+};
+
+export const eliminarToken = () =>{
+  localStorage.removeItem(KEY)
 }

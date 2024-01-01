@@ -1,12 +1,10 @@
 "use client";
 import React, { useState } from "react";
-import { login } from "@/api/fetch";
-import { useRouter } from "next/navigation";
 import Link from "next/link";
 import Button from "@/components/Button";
 import Label from "@/components/Label";
 import Input from "@/components/Input";
-import { guardarToken } from "@/lib/token";
+import { useSesion } from "@/global/sesion";
 
 interface FormData {
   email: string;
@@ -18,20 +16,10 @@ export default function Page() {
     email: "",
     password: "",
   });
-  const router = useRouter();
+  const { iniciarSesion } = useSesion();
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-
-    const res = await login(formData);
-
-    if (res) {
-      guardarToken(res.token);
-      if (res.response.data.role === "client") {
-        router.push("/");
-      } else {
-        router.push("/admin");
-      }
-    }
+    iniciarSesion(formData);
   };
 
   const handleInputChange = (
