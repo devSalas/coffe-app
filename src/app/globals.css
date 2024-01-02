@@ -2,3 +2,13 @@
 @tailwind components;
 @tailwind utilities;
 
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+}
+
+.fadeIn{
+  animation: fadeIn .2s ease-out both;
+}

@@ -1,4 +1,4 @@
-import { getCategories } from "@/api/fetch";
+import { getCategories } from "@/lib/data";
 import React from "react";
 import { CategoryI } from "@/types";
 import Table from "@/components/Table/Table";

@@ -6,6 +6,7 @@ interface Props {
   value?: string | number;
   cols: number;
   rows: number;
+  required?: boolean;
   onChange?: (event: ChangeEvent<HTMLTextAreaElement>) => void;
 }
 
@@ -15,6 +16,7 @@ const Textarea: React.FC<Props> = ({
   value,
   cols,
   rows,
+  required,
   onChange,
 }) => {
   return (
@@ -25,6 +27,7 @@ const Textarea: React.FC<Props> = ({
       cols={cols}
       rows={rows}
       onChange={onChange}
+      required={required}
     >
       {children}
     </textarea>

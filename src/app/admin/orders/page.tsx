@@ -1,4 +1,4 @@
-import { getOrders } from "@/api/fetch";
+import { getOrders } from "@/lib/data";
 import React from "react";
 import { OrderI } from "@/types";
 import Table from "@/components/Table/Table";

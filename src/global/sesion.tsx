@@ -1,6 +1,6 @@
 "use client";
 import React, { createContext, useContext, useState } from "react";
-import { login, signup, verifyToken } from "@/api/fetch";
+import { login, signup, verifyToken } from "@/lib/data";
 import { guardarToken, recuperarToken, eliminarToken } from "@/lib/token";
 import { useRouter } from "next/navigation";
 
