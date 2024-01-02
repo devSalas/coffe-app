@@ -38,7 +38,7 @@ export default function Page() {
       <Header title="Menus" />
       <div className="flex justify-end py-2">
         <Link
-          className="bg-orange-300 hover:bg-orange-400 text-orange-800 text-sm py-2 px-3 rounded transition-colors flex items-center gap-2"
+          className="bg-orange-300 hover:bg-orange-200 text-orange-800 text-sm py-2 px-3 rounded transition-colors flex items-center gap-2"
           href={"/admin/menus/add"}
         >
           Añadir

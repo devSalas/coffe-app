@@ -1,6 +1,6 @@
 import { getCategories } from "@/lib/data";
 import React from "react";
-import { CategoryI } from "@/types";
+import { CategoryI } from "@/lib/definitions";
 import Table from "@/components/Table/Table";
 import TableHead from "@/components/Table/TableHead";
 import TableCell from "@/components/Table/TableCell";
