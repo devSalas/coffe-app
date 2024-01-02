@@ -45,7 +45,7 @@ export default function Page() {
         </Link>
       </div>
       <section>
-        <section className="hidden md:block">
+        <section className="fadeIn hidden md:block">
           <Table>
             <thead>
               <tr className="bg-orange-100">

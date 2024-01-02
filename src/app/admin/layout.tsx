@@ -13,9 +13,9 @@ export default function Layout({ children }: { children: React.ReactNode }) {
   return (
     <>
       {isAuthenticated && user.role === "admin" ? (
-        <div>
+        <div className="flex gap-4">
           <Navbar />
-          {children}
+          <div className="flex-1">{children}</div>
         </div>
       ) : (
         <h1>no autorizado</h1>

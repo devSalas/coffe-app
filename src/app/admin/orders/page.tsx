@@ -1,24 +1,29 @@
+"use client";
+
+import React, { useState, useEffect } from "react";
 import { getOrders } from "@/lib/data";
-import React from "react";
 import { OrderI } from "@/lib/definitions";
 import Table from "@/components/Table/Table";
 import TableHead from "@/components/Table/TableHead";
 import TableCell from "@/components/Table/TableCell";
+import Header from "@/components/Header";
 
-export default async function Page() {
-  const res = await getOrders();
+export default function Page() {
+  const [orders, setOrders] = useState<OrderI[]>([]);
 
-  const orders: OrderI[] = res.data;
-
-  console.log(orders);
+  useEffect(() => {
+    getOrders().then((res) => {
+      setOrders(res.data);
+    });
+  }, []);
 
   return (
     <div>
-      <h1 className="text-2xl py-4">Ordenes</h1>
-      <section className="overflow-x-scroll">
+      <Header title="Ordenes" />
+      <section className="fadeIn overflow-x-scroll">
         <Table>
           <thead>
-            <tr className="bg-gray-100">
+            <tr className="bg-orange-100">
               <TableHead>ID</TableHead>
               <TableHead>Menu</TableHead>
               <TableHead>Usuario</TableHead>
