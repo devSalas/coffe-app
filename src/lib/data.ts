@@ -85,6 +85,17 @@ export const getMenu = async (idMenu: string) => {
     return data;
 };
 
+export const getCategory = async (id: string) => {
+    const res = await fetch(`${URL}/categories/${id}`, {cache: "no-store"});
+
+    if (!res.ok) {
+      throw new Error("error al obtener la categoria");
+    }
+
+    const data = await res.json();
+    return data;
+};
+
 export const getCategories = async () => {
     const res = await fetch(`${URL}/categories`);
 
@@ -128,6 +139,25 @@ export const addMenu = async (menu:any, token:string) => {
     return data;
 };
 
+export const addCategory = async (category:any, token:string) => {
+    const opciones = {
+      method: "POST",
+      headers: {
+        'Authorization': `Bearer ${token}`,
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(category),
+    };
+
+    const res = await fetch(`${URL}/categories`, opciones);
+
+    if (!res.ok) {
+      throw new Error("error al añadir una categoria");
+    }
+
+    return await res.json();
+};
+
 export const deleteMenu = async (menuId:string, token:string) => {
     const opciones = {
       method: "DELETE",
@@ -140,6 +170,24 @@ export const deleteMenu = async (menuId:string, token:string) => {
 
     if (!res.ok) {
       throw new Error("error al eliminar un menu");
+    }
+
+    const data = await res.json();
+    return data;
+};
+
+export const deleteCategory = async (id:string, token:string) => {
+    const opciones = {
+      method: "DELETE",
+      headers: {
+        'Authorization': `Bearer ${token}`,
+      }
+    };
+
+    const res = await fetch(`${URL}/categories/${id}`, opciones);
+
+    if (!res.ok) {
+      throw new Error("error al eliminar una categoria");
     }
 
     const data = await res.json();
@@ -160,6 +208,25 @@ export const editMenu = async (menuId:string, menu:any, token:string) => {
 
     if (!res.ok) {
       throw new Error("error al editar un menu");
+    }
+
+    const data = await res.json();
+    return data;
+};
+export const editCategory = async (id:string, category:any, token:string) => {
+    const opciones = {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+        'Authorization': `Bearer ${token}`,
+      },
+      body: JSON.stringify(category),
+    };
+
+    const res = await fetch(`${URL}/categories/${id}`, opciones);
+
+    if (!res.ok) {
+      throw new Error("error al editar una categoria");
     }
 
     const data = await res.json();

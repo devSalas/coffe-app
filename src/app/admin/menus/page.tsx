@@ -9,7 +9,6 @@ import TableCell from "@/components/Table/TableCell";
 import Link from "next/link";
 import { useSesion } from "@/global/sesion";
 import toast, { Toaster } from "react-hot-toast";
-import ArrowLeft from "@/components/icons/ArrowLeft";
 import Header from "@/components/Header";
 import Plus from "@/components/icons/Plus";
 
@@ -54,7 +53,7 @@ export default function Page() {
                 <TableHead>Name</TableHead>
                 <TableHead>Description</TableHead>
                 <TableHead>Price</TableHead>
-                <TableHead>Acciones</TableHead>
+                <TableHead></TableHead>
               </tr>
             </thead>
             <tbody>
@@ -67,13 +66,13 @@ export default function Page() {
                   <TableCell>
                     <div className="flex md:flex-row flex-col gap-1">
                       <Link
-                        className="bg-neutral-400 text-sm p-2 text-center text-white rounded"
+                        className="p-2 text-sm text-center text-orange-800 hover:underline rounded"
                         href={`/admin/menus/edit/${id_menu}`}
                       >
                         Editar
                       </Link>
                       <button
-                        className="bg-red-500 text-sm p-2 text-white rounded"
+                        className="bg-red-400 text-sm hover:bg-red-500 p-2 text-white rounded"
                         onClick={() => handleClick(id_menu)}
                       >
                         Eliminar

@@ -6,7 +6,7 @@ import Input from "@/components/Input";
 import { getMenu, getCategories, editMenu } from "@/lib/data";
 import toast, { Toaster } from "react-hot-toast";
 import { useSesion } from "@/global/sesion";
-import { useParams, useRouter } from "next/navigation";
+import { useParams } from "next/navigation";
 import Header from "@/components/Header";
 
 export default function Page() {
@@ -30,7 +30,7 @@ export default function Page() {
     getCategories().then((res) => {
       setCategories(res.data);
     });
-  }, []);
+  }, [id]);
 
   const handleSubmit = async (e: any) => {
     e.preventDefault();

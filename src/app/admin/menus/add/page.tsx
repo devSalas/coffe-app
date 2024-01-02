@@ -6,7 +6,6 @@ import Input from "@/components/Input";
 import { addMenu, getCategories } from "@/lib/data";
 import toast, { Toaster } from "react-hot-toast";
 import { useSesion } from "@/global/sesion";
-import Link from "next/link";
 import Select from "@/components/Select";
 import Textarea from "@/components/Textarea";
 import Header from "@/components/Header";
@@ -30,16 +29,14 @@ export default function Page() {
   const handleSubmit = async (e: any) => {
     e.preventDefault();
 
-    const { name, description, price, category_id } = e.target;
-
-    const menu = {
-      name: name.value,
-      description: description.value,
-      price: Number(price.value),
-      category_id: Number(category_id.value),
+    const newMenu = {
+      name: menu.name,
+      description: menu.description,
+      price: Number(menu.price),
+      category_id: Number(menu.category_id),
     };
 
-    const res = await addMenu(menu, token);
+    const res = await addMenu(newMenu, token);
     console.log(res);
 
     toast.success("menu creado");
