@@ -34,7 +34,7 @@ export const SesionProvider = ({ children }: { children: React.ReactNode }) => {
     if (res) {
       setUser(res.data);
       iniciarSesion({
-        email: user.name,
+        email: user.email,
         password: user.password,
       });
     }

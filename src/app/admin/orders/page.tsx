@@ -7,6 +7,7 @@ import Table from "@/components/Table/Table";
 import TableHead from "@/components/Table/TableHead";
 import TableCell from "@/components/Table/TableCell";
 import Header from "@/components/Header";
+import { formatearFecha } from "@/lib/utils";
 
 export default function Page() {
   const [orders, setOrders] = useState<OrderI[]>([]);
@@ -95,7 +96,9 @@ export default function Page() {
                 <p className="text-orange-900">
                   {menu.name} S/{menu.price} x {amount} = S/{total_price}
                 </p>
-                <p className="text-sm text-orange-700">{order_date}</p>
+                <p className="text-sm text-orange-700">
+                  {formatearFecha(order_date)}
+                </p>
               </li>
             )
           )}
