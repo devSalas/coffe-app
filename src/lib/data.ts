@@ -63,7 +63,7 @@ export const verifyToken = async (token: string) => {
 }
 
 
-export const getMenus = async () => {
+export const getMenus = async (search?:string) => {
     const res = await fetch(`${URL}/menus`, {cache: "no-store"});
 
     if (!res.ok) {
@@ -71,6 +71,16 @@ export const getMenus = async () => {
     }
 
     const data = await res.json();
+
+    if (search) {
+       let filtrados = data.data.filter(
+        (menu: any) =>
+          menu.name.toLowerCase().includes(search.toLowerCase()) ||
+          menu.description.toLowerCase().includes(search.toLowerCase())
+      );
+      return {...data, data: filtrados}
+    }
+
     return data;
 };
 

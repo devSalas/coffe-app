@@ -11,14 +11,19 @@ import { useSesion } from "@/global/sesion";
 import toast, { Toaster } from "react-hot-toast";
 import Header from "@/components/Header";
 import Plus from "@/components/icons/Plus";
+import { usePathname, useRouter, useSearchParams } from "next/navigation";
 
 export default function Page() {
   const [menus, setMenus] = useState<MenuI[]>([]);
 
   const { token } = useSesion();
 
+  const seachParams = useSearchParams();
+  const pathname = usePathname();
+  const router = useRouter();
+
   useEffect(() => {
-    getMenus().then((res) => {
+    getMenus(seachParams.get("search") ?? "").then((res) => {
       setMenus(res.data);
     });
   }, []);
@@ -32,10 +37,34 @@ export default function Page() {
     toast.success("menu eliminado");
   };
 
+  const handleSearch = (term: string) => {
+    const params = new URLSearchParams(seachParams);
+
+    if (term) {
+      params.set("search", term);
+    } else {
+      params.delete("search");
+    }
+
+    router.replace(`${pathname}?${params.toString()}`);
+
+    getMenus(seachParams.get("search") ?? "").then((res) => {
+      setMenus(res.data);
+    });
+  };
+
   return (
     <>
       <Header title="Menus" />
-      <div className="flex justify-end py-2">
+      <div className="flex gap-2 py-2">
+        <input
+          className="w-full p-2 border"
+          type="search"
+          placeholder="Search..."
+          defaultValue={seachParams.get("search")?.toString()}
+          onChange={(e) => handleSearch(e.target.value)}
+        />
+
         <Link
           className="bg-orange-300 hover:bg-orange-200 text-orange-800 text-sm py-2 px-3 rounded transition-colors flex items-center gap-2"
           href={"/admin/menus/add"}

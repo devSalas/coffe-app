@@ -27,17 +27,18 @@ export default function Navbar() {
   const pathname = usePathname();
 
   const handleClick = () => {
-    cerrarSesion();
+    setIsVisible(!isVisible);
   };
+
   return (
     <>
       <button
         className="md:hidden absolute right-4 top-2 z-50 p-2 text-orange-900"
-        onClick={() => setIsVisible(!isVisible)}
+        onClick={handleClick}
       >
         <Bars />
       </button>
-      <aside className="md:flex flex-col border hidden h-screen py-8 px-4 w-60">
+      <aside className="md:flex flex-col hidden h-screen py-8 px-4 w-60">
         <header className="py-8">
           <Link className="text-orange-900 text-2xl font-bold" href={"/admin"}>
             Coffe App
@@ -56,18 +57,20 @@ export default function Navbar() {
             </Link>
           ))}
         </nav>
-        <Button onClick={handleClick}>Cerrar sesion</Button>
+        <Button onClick={() => cerrarSesion()}>Cerrar sesion</Button>
       </aside>
       {isVisible && (
-        <div
-          className="absolute inset-0 z-20 bg-black/50 flex flex-col justify-end overflow-hidden"
-          onClick={() => setIsVisible(!isVisible)}
-        >
-          <aside className="bg-white rounded-t-3xl fadeIn flex flex-col gap-4 p-8">
-            <header className="py-8">
+        <div className="fixed inset-0 z-30 overflow-hidden">
+          <div
+            className="absolute inset-0 z-10 bg-black/50 "
+            onClick={handleClick}
+          ></div>
+          <aside className="bg-white absolute bottom-0 z-40 w-full rounded-t-3xl fadeIn flex flex-col gap-8 px-8 py-16">
+            <header className="">
               <Link
                 className="text-orange-900 text-2xl font-bold"
                 href={"/admin"}
+                onClick={handleClick}
               >
                 Coffe App
               </Link>
@@ -76,16 +79,17 @@ export default function Navbar() {
               {links.map(({ label, route }) => (
                 <Link
                   key={route}
-                  className={`text-orange-600 p-2 rounded hover:bg-orange-100 ${
+                  className={`text-orange-600 p-4  rounded hover:bg-orange-100 ${
                     pathname === route ? "bg-orange-200 " : ""
                   }`}
                   href={route}
+                  onClick={handleClick}
                 >
                   {label}
                 </Link>
               ))}
             </nav>
-            <Button onClick={handleClick}>Cerrar sesion</Button>
+            <Button onClick={() => cerrarSesion()}>Cerrar sesion</Button>
           </aside>
         </div>
       )}

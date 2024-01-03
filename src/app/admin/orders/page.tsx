@@ -20,7 +20,7 @@ export default function Page() {
   return (
     <div>
       <Header title="Ordenes" />
-      <section className="fadeIn overflow-x-scroll">
+      <section className="fadeIn hidden md:block">
         <Table>
           <thead>
             <tr className="bg-orange-100">
@@ -35,15 +35,71 @@ export default function Page() {
             </tr>
           </thead>
           <tbody>
-            {orders.map(({ id_order, menu, user }) => (
-              <tr key={id_order} className="border-b">
-                <TableCell>{id_order}</TableCell>
-                <TableCell>{menu.name}</TableCell>
-                <TableCell>{user.name}</TableCell>
-              </tr>
-            ))}
+            {orders.map(
+              ({
+                id_order,
+                menu,
+                user,
+                amount,
+                order_date,
+                total_price,
+                state,
+                payment_method,
+              }) => (
+                <tr key={id_order} className="border-b">
+                  <TableCell>{id_order}</TableCell>
+                  <TableCell>{menu.name}</TableCell>
+                  <TableCell>{user.name}</TableCell>
+                  <TableCell>{amount}</TableCell>
+                  <TableCell>{order_date}</TableCell>
+                  <TableCell>{total_price}</TableCell>
+                  <TableCell>
+                    <span className="text-sm bg-orange-400 py-1 px-3 rounded-full">
+                      {state}
+                    </span>
+                  </TableCell>
+                  <TableCell>{payment_method}</TableCell>
+                </tr>
+              )
+            )}
           </tbody>
         </Table>
+      </section>
+      <section className="md:hidden">
+        <ul className="flex flex-col gap-4">
+          {orders.map(
+            (
+              {
+                id_order,
+                menu,
+                user,
+                amount,
+                order_date,
+                total_price,
+                state,
+                payment_method,
+              },
+              i
+            ) => (
+              <li
+                key={id_order}
+                className="fadeIn p-4 bg-orange-100 rounded-xl flex flex-col gap-4"
+                style={{ animationDelay: `.${i}s` }}
+              >
+                <header className="flex justify-between">
+                  <h4 className="text-xl text-orange-800">{user.name}</h4>
+                  <span className="bg-orange-400 text-orange-900 py-1 px-3 rounded-full text-sm">
+                    {state}
+                  </span>
+                </header>
+                <p className="text-orange-900">
+                  {menu.name} S/{menu.price} x {amount} = S/{total_price}
+                </p>
+                <p className="text-sm text-orange-700">{order_date}</p>
+              </li>
+            )
+          )}
+        </ul>
       </section>
     </div>
   );
