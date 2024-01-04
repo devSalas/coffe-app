@@ -1,18 +1,10 @@
-'use client'
-import { useSesion } from "@/global/sesion";
-import { redirect } from "next/navigation";
+import Link from "next/link";
 
 export default function Page() {
-
- 
-  const { token } = useSesion()
-
-  if (!token) redirect('/home')
-
-
   return (
     <div>
-      <h1>home</h1>
+      <h1>Coffe app</h1>
+      <Link href={"/menu"}>Ir al Inicio</Link>
     </div>
   );
 }

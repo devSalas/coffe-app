@@ -1,10 +1,5 @@
-import CardContainer from "@/components/CardContainer";
 import Menu from "@/components/Menu";
-import UserCategory from "@/components/UserCategory";
 import Navbar from "@/components/UserNavbar";
-import WelcomeUser from "@/components/WelcomeUser";
-import Bell from "@/components/icons/Bell";
-import MenuIcon from "@/components/icons/MenuIcon";
 import { getCategories, getMenus } from "@/lib/data";
 import HeaderHome from "@/components/HeaderHome";
 
