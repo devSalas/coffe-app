@@ -4,7 +4,9 @@ import React from "react";
 export default function layout({ children }: { children: React.ReactNode }) {
   return (
     <CartProvider>
-      <div className="pb-32">{children}</div>
+      <main className="pb-32 md:px-8 px-4 bg-black min-h-screen text-neutral-500">
+        {children}
+      </main>
     </CartProvider>
   );
 }
