@@ -12,15 +12,7 @@ async function Home() {
     <div className="w-full">
       <HeaderHome />
       <div className="mb-4">
-        <p>Hola, Juana</p>
-        <p>Bienvenido de Nuevo</p>
-      </div>
-      <div className="mb-4  ">
-        <input
-          type="text"
-          placeholder="buscador...."
-          className="bg-second w-full rounded-md p-2"
-        />
+        <h2 className="text-2xl">Bienvenido/a</h2>
       </div>
       <Menu menus={menus} categories={categories} />
       <Navbar />
