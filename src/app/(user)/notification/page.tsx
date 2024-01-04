@@ -1,11 +1,6 @@
-'use client'
-import useFavorite from "@/hooks/useFavorite";
 import Link from "next/link";
 
-function Favorite() {
-    const {favorite} = useFavorite()
-
-    console.log(favorite)
+function Notification() {
     return (<div className="w-full min-h-screen bg-black py-4">
         <div className=" flex justify-center items-center text-center relative mb-8">
             <Link
@@ -21,10 +16,12 @@ function Favorite() {
                     <path d="M13.293 6.293 7.586 12l5.707 5.707 1.414-1.414L10.414 12l4.293-4.293z"></path>
                 </svg>
             </Link>
-            <h2 className="text-orange-500 text-xl">Favorite</h2>
+            <h2 className="text-orange-500 text-xl">Notificaciones</h2>
         </div>
-
+        <div className="w-full  text-sm  bg-slate-700 text-white p-4 rounded-lg">
+            No hay notificaciones 😎
+        </div>
     </div>);
 }
 
-export default Favorite;
+export default Notification;
