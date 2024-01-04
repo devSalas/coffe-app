@@ -31,3 +31,10 @@ export interface OrderI {
   state: string
   payment_method: string
 }
+
+export interface  IconSvgProps {
+  width?: string;
+  height?: string;
+  viewBox?: string;
+  style?: React.CSSProperties;
+}
