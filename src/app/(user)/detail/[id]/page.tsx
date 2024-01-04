@@ -16,7 +16,7 @@ function MenuId() {
         useCounter();
 
     const { cart, addToCart } = useCart();
-    const { addToFavorite } = useFavorite()
+    const { addToFavorite } =useFavorite()
 
 
 
@@ -38,6 +38,10 @@ function MenuId() {
         addToCart(menu, counter);
     };
 
+    const handleclickFavorite = ()=>{
+        addToFavorite(menu)
+    }
+
     if (menu == null) return <Loading />;
 
     return (
@@ -57,7 +61,7 @@ function MenuId() {
                             <path d="M13.293 6.293 7.586 12l5.707 5.707 1.414-1.414L10.414 12l4.293-4.293z"></path>
                         </svg>
                     </Link>
-                    <button className="w-8 rounded-full aspect-square bg-white">
+                    <button onClick={handleclickFavorite} className="w-8 rounded-full aspect-square bg-white ">
                         <svg
                             className="m-auto"
                             xmlns="http://www.w3.org/2000/svg"

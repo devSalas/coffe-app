@@ -1,9 +1,14 @@
 'use client'
+import CardFavorite from "@/components/CardFavorite";
 import useFavorite from "@/hooks/useFavorite";
 import Link from "next/link";
 
 function Favorite() {
-    const {favorite} = useFavorite()
+    const { favorite, removeToFavorite } = useFavorite()
+
+    const handleclickRemove=(menu)=>{
+        removeToFavorite(menu)
+    }
 
     console.log(favorite)
     return (<div className="w-full min-h-screen bg-black py-4">
@@ -23,7 +28,11 @@ function Favorite() {
             </Link>
             <h2 className="text-orange-500 text-xl">Favorite</h2>
         </div>
-
+        <div className="flex flex-col gap-4">
+            {
+               favorite.map(item=>(<CardFavorite key={item.id_menu} menu={item} handleclickRemove={handleclickRemove}/>)) 
+            }
+        </div>
     </div>);
 }
 
