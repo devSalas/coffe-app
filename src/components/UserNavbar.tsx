@@ -20,7 +20,7 @@ function Navbar() {
           className={`flex flex-col items-center p-2 hover:text-orange-500 ${
             pathname === "/home" ? "text-orange-500" : "text-neutral-500"
           }`}
-          href={"/"}
+          href={"/home"}
         >
           <HomeIcon />
           Inicio

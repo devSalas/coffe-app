@@ -16,6 +16,7 @@ export const SesionProvider = ({ children }: { children: React.ReactNode }) => {
   const iniciarSesion = async (user: any) => {
     const res = await login(user);
     if (res) {
+      console.log(res);
       guardarToken(res.token);
       setToken(res.token);
       setUser(res.data);
@@ -55,7 +56,6 @@ export const SesionProvider = ({ children }: { children: React.ReactNode }) => {
       setToken(null);
       setUser(null);
       setIsAuthenticated(false);
-      router.push("/login");
     } else {
       setToken(token);
       setUser(res.data);
