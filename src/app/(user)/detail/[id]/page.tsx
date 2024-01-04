@@ -16,7 +16,10 @@ function MenuId() {
         const getData = async () => {
             const res = await getMenu(id)
             console.log(res)
-            const menuFound = cart.find(item => item.id_menu == res.id_menu)
+            const menuFound = cart.find(item => item.id_menu == res.data.id_menu)
+
+            console.log(cart)
+            console.log(menuFound)
             if(menuFound){ 
                 console.log(menuFound.quantity)
                 setNumberToCounter(menuFound.quantity)
