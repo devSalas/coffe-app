@@ -1,6 +1,8 @@
 import useCart from "@/hooks/useCart";
-function Trash(menu: any) {
-  const { removeToCart }: any = useCart();
+import { MenuI } from "@/lib/definitions";
+function Trash({ menu }: { menu: MenuI }) {
+  const { removeToCart } = useCart();
+
   const handleClick = () => {
     removeToCart(menu);
   };

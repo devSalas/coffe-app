@@ -40,6 +40,7 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
 
   const removeToCart = (menu: MenuI) => {
     console.log(menu);
+    console.log(cart)
     setCart((prev) => prev.filter((item) => item.id_menu !== menu.id_menu));
   };
 
