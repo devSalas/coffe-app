@@ -10,7 +10,7 @@ function Account() {
 
   useEffect(() => {
     verificarSesion();
-  }, []);
+  }, [verificarSesion]);
 
   console.log(isAuthenticated, user);
 

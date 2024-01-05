@@ -2,13 +2,14 @@
 import React, { useEffect } from "react";
 import { useSesion } from "@/global/sesion";
 import Navbar from "@/components/Navbar";
+import Link from "next/link";
 
 export default function Layout({ children }: { children: React.ReactNode }) {
   const { user, isAuthenticated, verificarSesion } = useSesion();
 
   useEffect(() => {
     verificarSesion();
-  }, []);
+  }, [verificarSesion]);
 
   return (
     <>
@@ -20,7 +21,12 @@ export default function Layout({ children }: { children: React.ReactNode }) {
           </div>
         </main>
       ) : (
-        <h1>no autorizado</h1>
+        <div>
+          <p>no autorizado</p>
+          <Link className="text-orange-500" href={"/login"}>
+            iniciar sesion
+          </Link>
+        </div>
       )}
     </>
   );
