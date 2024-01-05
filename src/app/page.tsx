@@ -4,7 +4,7 @@ export default function Page() {
   return (
     <div>
       <h1>Coffe app</h1>
-      <Link href={"/menu"}>Ir al Inicio</Link>
+      <Link href={"/home"}>Ir al Inicio</Link>
     </div>
   );
 }

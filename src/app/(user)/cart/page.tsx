@@ -5,8 +5,10 @@ import useCart from "@/hooks/useCart";
 import Link from "next/link";
 
 function Cart() {
-  const { cart }: any = useCart();
+  const { cart } = useCart();
+
   console.log(cart);
+
   let totalPrice;
   let subtotal = 0;
   if (cart.length > 0) {
