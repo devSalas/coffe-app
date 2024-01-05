@@ -31,8 +31,7 @@ function Menu({
     });
   };
   const filteredMenus = filterMenu(data);
-  console.log(categories);
-  //crear un categoria que solo estar en el frontend
+  
   const modifyCategories = [{ name: "all" }, ...categories];
   return (
     <>

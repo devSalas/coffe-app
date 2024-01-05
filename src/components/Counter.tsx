@@ -1,11 +1,16 @@
 import { AnyCnameRecord } from "dns";
-
+interface PropsCounter{
+counter:number;
+decreaseCounter: ()=>void;
+increaseCounter: ()=>void;
+size: string;
+}
 function Counter({
   counter,
   decreaseCounter,
   increaseCounter,
   size = "small",
-}: AnyCnameRecord) {
+}:PropsCounter) {
   let setSize;
   if (size == "small") {
     setSize = "py-1 px-3";

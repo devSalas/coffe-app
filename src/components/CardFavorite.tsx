@@ -1,7 +1,13 @@
-import Heart from "./icons/Heart";
+import { MenuI } from "@/lib/definitions";
 
-function CardFavorite({ menu, handleclickRemove }) {
-    console.log(menu)
+interface PropsValue{
+    menu:MenuI;
+    handleclickRemove:(menu:MenuI)=>void
+}
+
+
+function CardFavorite({ menu, handleclickRemove }:PropsValue) {
+
     return (<div className="w-full min-h-20 flex justify-between items-center text-white bg-slate-700 p-4 rounded-lg">
         <div className="flex gap-4 items-center grow">
             <figure className="w-40">

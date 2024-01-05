@@ -1,12 +1,31 @@
 "use client";
+import { MenuI } from "@/lib/definitions";
 import { useState, createContext } from "react";
 
-export const CartContext = createContext({});
+interface ProductMenu extends MenuI {
+  quantity: number
+}
+
+
+interface PropsValue {
+  addToCart: (menu: MenuI, quantity: number) => void;
+  removeToCart: (menu: MenuI) => void;
+  cart: ProductMenu[]
+  clearCart: () => void;
+}
+
+export const CartContext = createContext<PropsValue>({
+  addToCart: () => { },
+  removeToCart: () => { },
+  cart: [],
+  clearCart: () => { }
+});
 
 export function CartProvider({ children }: { children: React.ReactNode }) {
-  const [cart, setCart] = useState([]);
+  const [cart, setCart] = useState<ProductMenu[]>([]);
 
-  const addToCart = (product, quantity) => {
+  const addToCart = (product: MenuI, quantity: number) => {
+    console.log({ product })
     const productInCartIndex = cart.findIndex(
       (item) => item.id_menu === product.id_menu
     );
@@ -20,10 +39,10 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
     setCart((prevState) => [...prevState, { ...product, quantity }]);
   };
 
-  const removeToCart = (product) => {
-    console.log({ product, num: 26 });
+  const removeToCart = (menu: MenuI) => {
+    console.log(menu)
     setCart((prev) =>
-      prev.filter((item) => item.id_menu !== product.menu.id_menu)
+      prev.filter((item) => item.id_menu !== menu.id_menu)
     );
   };
 

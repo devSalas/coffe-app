@@ -1,3 +1,4 @@
+import Navbar from "@/components/UserNavbar";
 import Link from "next/link";
 
 function Notification() {
@@ -22,6 +23,7 @@ function Notification() {
       <div className="w-full  text-sm  bg-slate-700 text-white p-4 rounded-lg">
         No hay notificaciones 😎
       </div>
+      <Navbar/>
     </div>
   );
 }

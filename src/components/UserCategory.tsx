@@ -4,7 +4,7 @@ function UserCategory({ categories, handleClickCategory }: any) {
       onClick={handleClickCategory}
       data-name={category.name}
       key={index}
-      className="bg-third text-second py-1 px-3 rounded-md"
+      className="bg-third text-second py-1 px-3 rounded-md cursor-pointer"
     >
       {category.name}
     </div>
