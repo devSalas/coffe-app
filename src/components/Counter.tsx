@@ -1,16 +1,15 @@
-import { AnyCnameRecord } from "dns";
-interface PropsCounter{
-counter:number;
-decreaseCounter: ()=>void;
-increaseCounter: ()=>void;
-size: string;
+interface PropsCounter {
+  counter: number;
+  decreaseCounter: () => void;
+  increaseCounter: () => void;
+  size: string;
 }
 function Counter({
   counter,
   decreaseCounter,
   increaseCounter,
   size = "small",
-}:PropsCounter) {
+}: PropsCounter) {
   let setSize;
   if (size == "small") {
     setSize = "py-1 px-3";
@@ -19,7 +18,7 @@ function Counter({
   }
 
   return (
-    <div className="bg-second text-fourth flex  rounded-md">
+    <div className="bg-second text-fourth flex items-center rounded-md">
       <button className={`${setSize}`} onClick={decreaseCounter}>
         {" "}
         −{" "}
