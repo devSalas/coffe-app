@@ -19,10 +19,10 @@ function Counter({
   }
 
   return (
-    <div className="bg-third text-second flex  rounded-md">
+    <div className="bg-second text-fourth flex  rounded-md">
       <button className={`${setSize}`} onClick={decreaseCounter}>
         {" "}
-        -{" "}
+        −{" "}
       </button>
       <span className={`${setSize}`}>{counter}</span>
       <button className={`${setSize}`} onClick={increaseCounter}>

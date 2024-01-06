@@ -61,14 +61,13 @@ const FavoriteProvider: FC<{ children: ReactNode }> = ({ children }) => {
   const [favorite, setFavorite] = useState<MenuI[]>([]);
 
   const addToFavorite = (menu: MenuI): void => {
-    console.log(menu, 11);
     const productInCartIndex = favorite.findIndex(
       (item) => item.id_menu === menu.id_menu
     );
 
-    if (productInCartIndex === -1)
-      setFavorite((prevState) => [...prevState, menu]);
-  };
+    if (productInCartIndex === -1) return setFavorite((prevState) => [...prevState, menu]);
+     removeToFavorite(menu)
+  }
 
   const removeToFavorite = (menu: MenuI): void => {
     setFavorite((prev) => prev.filter((item) => item.id_menu !== menu.id_menu));

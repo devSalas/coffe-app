@@ -2,6 +2,7 @@ import Menu from "@/components/Menu";
 import Navbar from "@/components/UserNavbar";
 import { getCategories, getMenus } from "@/lib/data";
 import HeaderHome from "@/components/HeaderHome";
+import Sidebar from "@/components/Sidebar";
 
 async function Home() {
   const { data: categories } = await getCategories();
@@ -9,13 +10,17 @@ async function Home() {
   const { data: menus } = await getMenus();
 
   return (
-    <div className="w-full">
-      <HeaderHome />
-      <div className="mb-4">
-        <h2 className="text-2xl">Bienvenido/a</h2>
+    <div className="w-full sm:flex sm:h-screen sm:py-4  ">
+       <Navbar />
+
+      <div className="grow sm:px-4">
+        <HeaderHome />
+        <div className="mb-4">
+          <h2 className="text-2xl">Bienvenido/a</h2>
+        </div>
+        <Menu menus={menus} categories={categories} />
+       
       </div>
-      <Menu menus={menus} categories={categories} />
-      <Navbar />
     </div>
   );
 }

@@ -16,7 +16,7 @@ function Account() {
 
   if (isAuthenticated) {
     return (
-      <div>
+      <div className="">
         <Navbar />
         <header className="py-8 flex items-center gap-4">
           <img
@@ -42,17 +42,21 @@ function Account() {
   }
 
   return (
-    <div>
+
+    <div className="sm:flex pt-4">
       <Navbar />
-      <header className="py-8">
-        <h1 className="text-2xl">No has iniciado sesion</h1>
-      </header>
-      <Link
-        className="bg-neutral-500 px-4 py-2 text-white rounded"
-        href={"/login"}
-      >
-        Iniciar Sesion
-      </Link>
+      <div className="px-4">
+
+        <header className="py-8">
+          <h1 className="text-2xl">No has iniciado sesion</h1>
+        </header>
+        <Link
+          className="bg-neutral-500 px-4 py-2 text-white rounded"
+          href={"/login"}
+        >
+          Iniciar Sesion
+        </Link>
+      </div>
     </div>
   );
 }
