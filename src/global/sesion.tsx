@@ -25,7 +25,7 @@ export const SesionProvider = ({ children }: { children: React.ReactNode }) => {
       if (res.data.role === "admin") {
         router.push("/admin");
       } else {
-        router.push("/");
+        router.push("/home");
       }
     }
   };

@@ -13,6 +13,7 @@ import Header from "@/components/Header";
 export default function Page() {
   const [menu, setMenu] = useState({
     name: "",
+    url: "",
     description: "",
     price: 1,
     category_id: 0,
@@ -31,6 +32,7 @@ export default function Page() {
 
     const newMenu = {
       name: menu.name,
+      url: menu.url,
       description: menu.description,
       price: Number(menu.price),
       category_id: Number(menu.category_id),
@@ -57,6 +59,16 @@ export default function Page() {
             type="text"
             name="name"
             value={menu.name}
+            required
+            onChange={handleChange}
+          />
+        </Label>
+        <Label>
+          Url Image
+          <Input
+            type="text"
+            name="name"
+            value={menu.url}
             required
             onChange={handleChange}
           />

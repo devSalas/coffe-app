@@ -8,7 +8,6 @@ import {
   UserIcon,
 } from "./icons/IconsUserNavbar";
 import { usePathname } from "next/navigation";
-import Signup from "./icons/Signup";
 
 function Navbar() {
   const pathname = usePathname();
