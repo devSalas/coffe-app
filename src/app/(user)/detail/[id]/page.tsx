@@ -81,7 +81,7 @@ function MenuId() {
           </div>
           <img
             className="sm:m-auto"
-            src="https://i.pinimg.com/564x/07/cf/ab/07cfab2d935720548b47829ff0026f8f.jpg"
+            src={menu.url}
             alt={menu.name}
           />
         </figure>
