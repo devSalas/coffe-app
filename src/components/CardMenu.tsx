@@ -3,19 +3,15 @@ import Link from "next/link";
 import { MenuI } from "@/lib/definitions";
 
 function CardMenu({ menu }: { menu: MenuI }) {
+  console.log({menu})
+
   return (
     <Link
       href={`../detail/${menu.id_menu}`}
       className="min-h-40 aspect-[4/5] bg-third text-fourth rounded-xl grid grid-rows-5 overflow-hidden"
     >
-      <figure className="w-full h-full flex justify-center items-center row-span-3">
-        <Image
-          className="w-full "
-          src="/icono_menu.png"
-          alt="image"
-          width={50}
-          height={50}
-        />
+      <figure className="w-full h-full flex justify-center items-center row-span-3 p-4">
+        <img src={menu.url} alt="menu" />
       </figure>
       <div className="flex items-center justify-between gap-4 p-4 row-span-2">
         <div className="flex flex-col gap-2">

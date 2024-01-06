@@ -29,7 +29,6 @@ function Menu({ menus, categories, }: {
   };
   const filteredMenus = filterMenu(data);
 
-  const modifyCategories = [{ name: "all" }, ...categories];
   return (
     <>
       <div className="mb-4  ">
@@ -43,7 +42,7 @@ function Menu({ menus, categories, }: {
       </div>
       <div className="flex gap-4 overflow-hidden">
         <UserCategory
-          categories={modifyCategories}
+          categories={categories}
           handleClickCategory={handleClick}
         />
       </div>

@@ -48,9 +48,9 @@ function MenuId() {
   if (menu == null) return <Loading />;
 
   return (
-    <section className="flex">
+    <section className="flex sm:pt-4">
       <Navbar />
-      <section className="relative md:flex">
+      <section className="relative md:flex ">
         <header className="absolute top-0 left-0 w-full flex justify-between p-4">
           <Link
             href="/home"
@@ -83,10 +83,10 @@ function MenuId() {
           </button>
         </header>
 
-        <figure>
+        <figure className="sm:max-w-96 flex justify-center items-center">
           <img
-            className=""
-            src="https://i.pinimg.com/564x/07/cf/ab/07cfab2d935720548b47829ff0026f8f.jpg"
+            className="sm:m-auto"
+            src={menu.url}
             alt={menu.name}
           />
         </figure>

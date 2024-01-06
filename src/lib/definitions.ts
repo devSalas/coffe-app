@@ -10,6 +10,7 @@ export interface MenuI {
   price: number
   category_id: string
   category: CategoryI
+  url: string
 }
 
 export interface UserI {
