@@ -67,7 +67,7 @@ export default function Page() {
           Url Image
           <Input
             type="text"
-            name="name"
+            name="url"
             value={menu.url}
             required
             onChange={handleChange}
