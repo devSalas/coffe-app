@@ -6,7 +6,7 @@ import { CategoryI } from "@/lib/definitions";
 import Table from "@/components/Table/Table";
 import TableHead from "@/components/Table/TableHead";
 import TableCell from "@/components/Table/TableCell";
-import Header from "@/components/Header";
+import Header from "@/components/Admin/Header";
 import Link from "next/link";
 import Plus from "@/components/icons/Plus";
 import { useSesion } from "@/global/sesion";

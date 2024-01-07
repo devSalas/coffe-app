@@ -1,7 +1,7 @@
 import Link from "next/link";
 import React, { useState } from "react";
 import { useSesion } from "@/global/sesion";
-import Button from "./Button";
+import Button from "./ui/Button";
 import { usePathname } from "next/navigation";
 import Bars from "./icons/Bars";
 

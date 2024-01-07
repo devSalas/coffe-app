@@ -9,7 +9,7 @@ import TableCell from "@/components/Table/TableCell";
 import Link from "next/link";
 import { useSesion } from "@/global/sesion";
 import toast, { Toaster } from "react-hot-toast";
-import Header from "@/components/Header";
+import Header from "@/components/Admin/Header";
 import Plus from "@/components/icons/Plus";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 

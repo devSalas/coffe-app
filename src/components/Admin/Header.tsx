@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import ArrowLeft from "./icons/ArrowLeft";
+import ArrowLeft from "../icons/ArrowLeft";
 import { useRouter } from "next/navigation";
 
 export default function Header({ title }: { title: string }) {

@@ -1,9 +1,9 @@
 "use client";
 import React, { useState } from "react";
 import Link from "next/link";
-import Button from "@/components/Button";
-import Input from "@/components/Input";
-import Label from "@/components/Label";
+import Button from "@/components/ui/Button";
+import Input from "@/components/ui/Input";
+import Label from "@/components/ui/Label";
 import { useSesion } from "@/global/sesion";
 
 interface FormData {

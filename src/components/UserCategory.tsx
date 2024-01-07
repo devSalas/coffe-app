@@ -1,19 +1,10 @@
 "use client";
 
 import { useMenu } from "@/global/MenuFilterContext";
-import { getCategories } from "@/lib/data";
 import { CategoryI } from "@/lib/definitions";
-import { useState, useEffect } from "react";
 
 function UserCategory() {
-  const [categories, setCategories] = useState<CategoryI[]>([]);
-  const { filterByCategory, categorySelect } = useMenu();
-
-  useEffect(() => {
-    getCategories().then((res: any) => {
-      setCategories(res.data);
-    });
-  }, []);
+  const { filterByCategory, categorySelect, categories } = useMenu();
 
   if (categories.length === 0)
     return (
@@ -24,7 +15,7 @@ function UserCategory() {
       </>
     );
 
-  return categories.map(({ id_category, name }) => (
+  return categories.map(({ id_category, name }: CategoryI) => (
     <div
       onClick={() => filterByCategory(name)}
       key={id_category}

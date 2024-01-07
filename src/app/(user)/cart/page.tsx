@@ -1,5 +1,5 @@
 "use client";
-import CarMenuCart from "@/components/CardMenuCart";
+import CarMenuCart from "@/components/Cart/CardMenuCart";
 import Navbar from "@/components/UserNavbar";
 import useCart from "@/hooks/useCart";
 import Link from "next/link";

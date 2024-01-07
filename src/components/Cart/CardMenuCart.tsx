@@ -1,6 +1,6 @@
 "use client";
 
-import Trash from "./icons/Trash";
+import Trash from "../icons/Trash";
 import { ProductMenu } from "@/global/Cart";
 
 interface Props {

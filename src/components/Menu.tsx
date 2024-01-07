@@ -1,5 +1,5 @@
 import { Suspense } from "react";
-import CardContainer from "./CardContainer";
+import CardContainer from "./Home/CardContainer";
 import UserCategory from "./UserCategory";
 import Search from "@/app/(user)/home/Search";
 

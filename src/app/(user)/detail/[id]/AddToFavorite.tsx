@@ -9,7 +9,7 @@ interface Props {
 }
 
 export default function AddToFavorite({ menu }: Props) {
-  const { favorite, addToFavorite } = useFavorite();
+  const { isFavorite, addToFavorite } = useFavorite();
 
   const handleclick = () => {
     if (menu) addToFavorite(menu);
@@ -20,7 +20,7 @@ export default function AddToFavorite({ menu }: Props) {
       onClick={handleclick}
       className="w-8 h-8 rounded-full aspect-square bg-white flex justify-center items-center"
     >
-      {favorite.includes(menu) ? <HeartOutline /> : <HeartSolid />}
+      {isFavorite(menu.id_menu) ? <HeartOutline /> : <HeartSolid />}
     </button>
   );
 }

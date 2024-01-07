@@ -1,14 +1,14 @@
 "use client";
 import React, { useState, useEffect } from "react";
-import Button from "@/components/Button";
-import Label from "@/components/Label";
-import Input from "@/components/Input";
+import Button from "@/components/ui/Button";
+import Label from "@/components/ui/Label";
+import Input from "@/components/ui/Input";
 import { addMenu, getCategories } from "@/lib/data";
 import toast, { Toaster } from "react-hot-toast";
 import { useSesion } from "@/global/sesion";
-import Select from "@/components/Select";
-import Textarea from "@/components/Textarea";
-import Header from "@/components/Header";
+import Select from "@/components/ui/Select";
+import Textarea from "@/components/ui/Textarea";
+import Header from "@/components/Admin/Header";
 
 export default function Page() {
   const [menu, setMenu] = useState({

@@ -1,11 +1,12 @@
 "use client";
+
 import CardFavorite from "@/components/CardFavorite";
 import useFavorite from "@/hooks/useFavorite";
 import { MenuI } from "@/lib/definitions";
 import Link from "next/link";
 
 function Favorite() {
-  const { favorite, removeToFavorite } = useFavorite();
+  const { favorites, removeToFavorite } = useFavorite();
 
   const handleclickRemove = (menu: MenuI) => {
     if (menu != undefined) {
@@ -13,7 +14,6 @@ function Favorite() {
     }
   };
 
-  console.log(favorite);
   return (
     <>
       <div className="grow p-4">
@@ -34,8 +34,8 @@ function Favorite() {
           <h2 className="text-second text-xl">Favorite</h2>
         </div>
         <div className="flex flex-col gap-4">
-          {favorite.length > 0 ? (
-            favorite?.map((item: MenuI) => (
+          {favorites.length > 0 ? (
+            favorites?.map((item: MenuI) => (
               <CardFavorite
                 key={item.id_menu}
                 menu={item}
