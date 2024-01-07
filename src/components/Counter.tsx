@@ -1,35 +1,47 @@
-interface PropsCounter {
-  counter: number;
-  decreaseCounter: () => void;
-  increaseCounter: () => void;
+"use client";
+
+import { useCounter } from "@/app/(user)/detail/[id]/counterContext";
+import { clsx } from "clsx";
+
+interface Props {
   size: string;
 }
-function Counter({
-  counter,
-  decreaseCounter,
-  increaseCounter,
-  size = "small",
-}: PropsCounter) {
-  let setSize;
-  if (size == "small") {
-    setSize = "py-1 px-3";
-  } else {
-    setSize = "py-2 px-4";
-  }
+
+function Counter({ size = "small" }: Props) {
+  const { counter, increment, decrement } = useCounter();
 
   return (
-    <div className="bg-second text-fourth flex items-center rounded-md">
-      <button className={`${setSize}`} onClick={decreaseCounter}>
-        {" "}
-        −{" "}
+    <div className={"bg-second text-fourth flex items-center rounded-md"}>
+      <button
+        className={clsx("", {
+          "py-1 px-3": size === "small",
+          "py-2 px-4": size === "large",
+        })}
+        onClick={decrement}
+      >
+        −
       </button>
-      <span className={`${setSize}`}>{counter}</span>
-      <button className={`${setSize}`} onClick={increaseCounter}>
-        {" "}
-        +{" "}
+      <span
+        className={clsx("", {
+          "py-1 px-3": size === "small",
+          "py-2 px-4": size === "large",
+        })}
+      >
+        {counter}
+      </span>
+      <button
+        className={clsx("", {
+          "py-1 px-3": size === "small",
+          "py-2 px-4": size === "large",
+        })}
+        onClick={increment}
+      >
+        +
       </button>
     </div>
   );
 }
 
 export default Counter;
+
+// bg-second text-fourth flex items-center rounded-md

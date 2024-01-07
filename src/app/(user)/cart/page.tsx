@@ -21,7 +21,6 @@ function Cart() {
 
   return (
     <div className=" bg-black pt-4 flex flex-col sm:flex-row mb-10">
-      <Navbar />
       <div className="sm:grow p-4">
         <div className="grow">
           <div className="relative mb-8 flex items-center justify-center text-xl text-second">
@@ -68,8 +67,7 @@ function Cart() {
             Enviar Orden
           </button>
         </div>
-        <div className="h-20 sm:hidden">
-        </div>
+        <div className="h-20 sm:hidden"></div>
       </div>
     </div>
   );

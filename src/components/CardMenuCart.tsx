@@ -1,40 +1,30 @@
 "use client";
-import useCounter from "@/hooks/useCounter";
-import Counter from "./Counter";
-import { useEffect } from "react";
-import useCart from "@/hooks/useCart";
+
 import Trash from "./icons/Trash";
-import { MenuI } from "@/lib/definitions";
+import { ProductMenu } from "@/global/Cart";
 
-function CarMenuCart({ menu }: { menu: any }) {
-  const { car, addToCart }: any = useCart();
-  const { counter, increaseCounter, decreaseCounter, setNumberToCounter } =
-    useCounter();
-  useEffect(() => {
-    setNumberToCounter(menu.quantity);
-  }, []);
-  useEffect(() => {
-    addToCart(menu, counter);
-  }, [counter]);
+interface Props {
+  menu: ProductMenu;
+}
 
+function CarMenuCart({ menu }: Props) {
   return (
-    <div className=" bg-gray-700 rounded-lg p-3 flex mb-4 text-white">
-      <div className="flex grow">
-        <figure className="h-16">
-          <img className="h-full" src="icono_menu.png" alt="" />
-        </figure>
-        <div className="">
-          <h3>{menu.name}</h3>
-          <small>s/{menu.price}</small>
-        </div>
-      </div>
-      <div className="flex flex-col items-center gap-2">
-        <Counter
-          counter={counter}
-          increaseCounter={increaseCounter}
-          decreaseCounter={decreaseCounter}
-          size="small"
+    <div className=" bg-neutral-800 rounded-lg p-3 flex gap-4 mb-4 text-white ">
+      <figure className="w-20 h-16">
+        <img
+          className="w-full h-full object-contain"
+          src={menu.url}
+          alt={menu.name}
         />
+      </figure>
+
+      <div className="flex-1">
+        <h3>{menu.name}</h3>
+        <span>S/{menu.price}</span>
+      </div>
+
+      <div className="flex flex-col items-center gap-2">
+        {menu.quantity}
         <Trash menu={menu} />
       </div>
     </div>

@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect } from "react";
-import Navbar from "@/components/UserNavbar";
 import { useSesion } from "@/global/sesion";
 import Link from "next/link";
 
@@ -17,7 +16,6 @@ function Account() {
   if (isAuthenticated) {
     return (
       <div className="">
-        <Navbar />
         <header className="py-8 flex items-center gap-4">
           <img
             className="bg-neutral-700 w-20 h-20 rounded-full"
@@ -42,11 +40,8 @@ function Account() {
   }
 
   return (
-
     <div className="sm:flex pt-4">
-      <Navbar />
       <div className="px-4">
-
         <header className="py-8">
           <h1 className="text-2xl">No has iniciado sesion</h1>
         </header>
