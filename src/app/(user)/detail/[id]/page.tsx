@@ -12,7 +12,7 @@ async function MenuId({ params }: any) {
   console.log("--> menu", menu);
 
   return (
-    <section className="flex sm:pt-4">
+    <>
       <section className="relative md:flex ">
         <header className="absolute top-0 left-0 w-full flex justify-between p-4">
           <Link
@@ -71,7 +71,7 @@ async function MenuId({ params }: any) {
           </div>
         </section>
       </section>
-    </section>
+    </>
   );
 }
 

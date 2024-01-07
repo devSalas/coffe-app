@@ -1,5 +1,4 @@
 import React from "react";
-import Bars from "./icons/Bars";
 import BellIcon from "./icons/BellIcon";
 import { dancingScript } from "@/app/fonts";
 import Sidebar from "./Sidebar";

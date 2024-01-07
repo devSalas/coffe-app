@@ -15,7 +15,7 @@ function Favorite() {
 
   console.log(favorite);
   return (
-    <div className="w-full  bg-black py-4 sm:flex ">
+    <>
       <div className="grow p-4">
         <div className=" flex justify-center items-center text-center relative mb-8">
           <Link
@@ -49,7 +49,7 @@ function Favorite() {
           )}
         </div>
       </div>
-    </div>
+    </>
   );
 }
 
