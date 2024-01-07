@@ -108,7 +108,7 @@ export const getCategory = async (id: string) => {
 };
 
 export const getCategories = async () => {
-    const res = await fetch(`${URL}/categories`);
+    const res = await fetch(`${URL}/categories`, {cache: "no-store"});
 
     if (!res.ok) {
       throw new Error("error al obtener las categorias");
@@ -119,7 +119,7 @@ export const getCategories = async () => {
 };
 
 export const getOrders = async () => {
-    const res = await fetch(`${URL}/orders`);
+    const res = await fetch(`${URL}/orders`, {cache: "no-store"});
 
     if (!res.ok) {
       throw new Error("error al obtener las ordenes");
