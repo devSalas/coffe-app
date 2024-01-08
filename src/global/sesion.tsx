@@ -28,6 +28,7 @@ export const SesionProvider = ({ children }: { children: React.ReactNode }) => {
         router.push("/home");
       }
     }
+    return res
   };
 
   const registrarse = async (user: any) => {
@@ -39,6 +40,7 @@ export const SesionProvider = ({ children }: { children: React.ReactNode }) => {
         password: user.password,
       });
     }
+    return res
   };
 
   const cerrarSesion = () => {

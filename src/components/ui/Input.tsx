@@ -6,6 +6,8 @@ interface InputProps {
   value?: string | number;
   required?: boolean;
   min?: string;
+  classN?:string;
+  minLength?:number;
   onChange?: (event: ChangeEvent<HTMLInputElement>) => void;
 }
 
@@ -16,16 +18,19 @@ const Input: React.FC<InputProps> = ({
   required,
   min,
   onChange,
+  classN  = "",
+  minLength =0
 }) => {
   return (
     <input
-      className="bg-orange-100 focus:outline-1 focus:bg-orange-200 rounded py-3 px-4 outline-orange-300 hover:bg-orange-200"
+      className={`${classN} bg-orange-100 focus:outline-1 focus:bg-orange-200 rounded py-3 px-4 outline-orange-300 hover:bg-orange-200`}
       type={type}
       name={name}
       value={value}
       required={required}
       min={min}
       onChange={onChange}
+      minLength={minLength}
     />
   );
 };
