@@ -2,7 +2,7 @@
 
 import useFavorite from "@/hooks/useFavorite";
 import { MenuI } from "@/lib/definitions";
-import React from "react";
+import toast, { Toaster } from "react-hot-toast";
 
 interface Props {
   menu: MenuI;
@@ -12,7 +12,15 @@ export default function AddToFavorite({ menu }: Props) {
   const { isFavorite, addToFavorite } = useFavorite();
 
   const handleclick = () => {
-    if (menu) addToFavorite(menu);
+    if (menu) {
+      const result = addToFavorite(menu);
+
+      if (result) {
+        toast.success(`${menu.name} añadido/a a favoritos.`);
+      } else {
+        toast.success(`${menu.name} eliminado/a de favoritos.`);
+      }
+    }
   };
 
   return (
@@ -21,6 +29,7 @@ export default function AddToFavorite({ menu }: Props) {
       className="w-8 h-8 rounded-full aspect-square bg-white flex justify-center items-center"
     >
       {isFavorite(menu.id_menu) ? <HeartOutline /> : <HeartSolid />}
+      <Toaster />
     </button>
   );
 }

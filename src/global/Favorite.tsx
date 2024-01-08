@@ -10,6 +10,7 @@ interface PropsValue {
   favorites: MenuI[];
   isFavorite: (id: number) => Boolean;
   clearFavorite: () => void;
+  count: () => number;
 }
 
 const FavoriteProvider: FC<{ children: ReactNode }> = ({ children }) => {
@@ -20,9 +21,12 @@ const FavoriteProvider: FC<{ children: ReactNode }> = ({ children }) => {
       (item) => item.id_menu === menu.id_menu
     );
 
-    if (productInCartIndex === -1)
-      return setFavorites((prevState) => [...prevState, menu]);
+    if (productInCartIndex === -1) {
+      setFavorites((prevState) => [...prevState, menu]);
+      return true;
+    }
     removeToFavorite(menu);
+    return false;
   };
 
   const removeToFavorite = (menu: MenuI) => {
@@ -37,6 +41,8 @@ const FavoriteProvider: FC<{ children: ReactNode }> = ({ children }) => {
     return favorites.some((favorite) => favorite.id_menu === id);
   };
 
+  const count = () => favorites.length;
+
   return (
     <FavoriteContext.Provider
       value={{
@@ -45,6 +51,7 @@ const FavoriteProvider: FC<{ children: ReactNode }> = ({ children }) => {
         favorites,
         clearFavorite,
         isFavorite,
+        count,
       }}
     >
       {children}

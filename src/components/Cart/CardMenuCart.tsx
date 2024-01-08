@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import Trash from "../icons/Trash";
 import { ProductMenu } from "@/global/Cart";
 
@@ -9,17 +10,21 @@ interface Props {
 
 function CarMenuCart({ menu }: Props) {
   return (
-    <div className=" bg-neutral-800 rounded-lg p-3 flex gap-4 mb-4 text-white ">
-      <figure className="w-20 h-16">
-        <img
-          className="w-full h-full object-contain"
-          src={menu.url}
-          alt={menu.name}
-        />
-      </figure>
+    <div className="bg-neutral-800 rounded-lg p-3 flex gap-4 text-white ">
+      <Link href={`/detail/${menu.id_menu}`}>
+        <figure className="w-20 h-16">
+          <img
+            className="w-full h-full object-contain"
+            src={menu.url}
+            alt={menu.name}
+          />
+        </figure>
+      </Link>
 
       <div className="flex-1">
-        <h3>{menu.name}</h3>
+        <Link href={`/detail/${menu.id_menu}`}>
+          <h3>{menu.name}</h3>
+        </Link>
         <span>S/{menu.price}</span>
       </div>
 

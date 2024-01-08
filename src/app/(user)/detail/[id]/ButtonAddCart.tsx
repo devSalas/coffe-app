@@ -3,7 +3,7 @@ import React from "react";
 import { useCounter } from "./counterContext";
 import useCart from "@/hooks/useCart";
 import { MenuI } from "@/lib/definitions";
-import Link from "next/link";
+import toast, { Toaster } from "react-hot-toast";
 
 export default function ButtonAddCart({ menu }: { menu: MenuI }) {
   const { counter, reset } = useCounter();
@@ -13,16 +13,17 @@ export default function ButtonAddCart({ menu }: { menu: MenuI }) {
     if (menu) {
       addToCart(menu, counter);
       reset();
+      toast.success(`${counter} ${menu.name} añadido/a al carrito.`);
     }
   };
 
   return (
-    <Link
+    <button
       onClick={handleclick}
-      href="/cart"
-      className="text-fourth bg-second rounded-lg py-4 text-center grow"
+      className="text-fourth bg-second rounded-lg py-3 text-center grow"
     >
       Agregar a carrito
-    </Link>
+      <Toaster />
+    </button>
   );
 }

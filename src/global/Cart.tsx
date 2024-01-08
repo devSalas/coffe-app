@@ -11,14 +11,10 @@ interface PropsValue {
   removeToCart: (menu: MenuI) => void;
   cart: ProductMenu[];
   clearCart: () => void;
+  count: () => number;
 }
 
-export const CartContext = createContext<PropsValue>({
-  addToCart: () => {},
-  removeToCart: () => {},
-  cart: [],
-  clearCart: () => {},
-});
+export const CartContext = createContext<PropsValue | undefined>(undefined);
 
 export function CartProvider({ children }: { children: React.ReactNode }) {
   const [cart, setCart] = useState<ProductMenu[]>([]);
@@ -40,7 +36,7 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
 
   const removeToCart = (menu: MenuI) => {
     console.log(menu);
-    console.log(cart)
+    console.log(cart);
     setCart((prev) => prev.filter((item) => item.id_menu !== menu.id_menu));
   };
 
@@ -48,8 +44,14 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
     setCart([]);
   };
 
+  const count = (): number => {
+    return cart.reduce((total, product) => total + product.quantity, 0);
+  };
+
   return (
-    <CartContext.Provider value={{ cart, addToCart, clearCart, removeToCart }}>
+    <CartContext.Provider
+      value={{ cart, addToCart, clearCart, removeToCart, count }}
+    >
       {children}
     </CartContext.Provider>
   );

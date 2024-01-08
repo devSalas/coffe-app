@@ -14,7 +14,7 @@ export default function layout({ children }: { children: React.ReactNode }) {
             <main className="md:px-8 px-4 bg-black min-h-screen text-neutral-500">
               <section className="max-w-7xl mx-auto flex gap-8 relative">
                 <Navbar />
-                <div className="w-full pb-32">{children}</div>
+                <div className="w-full py-16">{children}</div>
               </section>
             </main>
           </MenuProvider>

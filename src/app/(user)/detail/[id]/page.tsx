@@ -13,54 +13,37 @@ async function MenuId({ params }: any) {
 
   return (
     <>
-      <section className="relative md:flex ">
-        <header className="absolute top-0 left-0 w-full flex justify-between p-4">
-          <Link
-            href="/home"
-            className="w-8 rounded-full aspect-square bg-white"
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="30"
-              height="30"
-              viewBox="0 0 24 24"
-            >
-              <path d="M13.293 6.293 7.586 12l5.707 5.707 1.414-1.414L10.414 12l4.293-4.293z"></path>
-            </svg>
-          </Link>
-          <AddToFavorite menu={menu} />
-        </header>
-
-        <figure className="sm:max-w-96 flex justify-center items-center">
-          <img className="sm:m-auto" src={menu.url} alt={menu.name} />
+      <section className="grid md:grid-cols-2 gap-8">
+        <figure>
+          <img
+            className="w-full h-full object-contain object-top"
+            src={menu.url}
+            alt={menu.name}
+          />
         </figure>
 
-        <section className="md:w-96 md:py-16">
-          <div className="flex justify-between items-center p-4">
+        <section className="flex flex-col gap-4">
+          <header className="flex justify-between items-center ">
             <h2 className="text-fourth text-2xl">{menu.name}</h2>
+            <AddToFavorite menu={menu} />
+          </header>
+
+          <h3 className="text-fourth">Descripcion</h3>
+          <p className="text-sm text-neutral-400">{menu.description}</p>
+          <p className="text-sm text-neutral-400">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis
+            maxime itaque corporis non labore rerum delectus nobis placeat
+            porro, iste, deleniti nisi est? Laudantium illo architecto mollitia
+            ad, ex laborum. Lorem ipsum dolor sit amet consectetur adipisicing
+            elit.
+          </p>
+          <div className="flex gap-3 items-center">
+            <p className="text-neutral-300">Cantidad:</p>
             <Counter size="large" />
           </div>
 
-          <div className="">
-            <h3 className="ml-4 text-fourth">Descripcion</h3>
-            <p className="p-4  text-sm  text-slate-400 ">
-              {menu.description || "no hay informacion"}
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis
-              maxime itaque corporis non labore rerum delectus nobis placeat
-              porro, iste, deleniti nisi est? Laudantium illo architecto
-              mollitia ad, ex laborum. Lorem ipsum dolor sit amet consectetur
-              adipisicing elit. Ipsam, facere nobis! Exercitationem nihil sed
-              vel enim maxime temporibus consectetur, voluptates ipsa similique
-              ipsum excepturi nam cupiditate id sit aperiam. Ab. Lorem ipsum
-              dolor sit amet consectetur adipisicing elit. Et molestiae
-              excepturi nam ratione, hic illum commodi amet laudantium. Pariatur
-              quos ipsam mollitia aspernatur deserunt impedit ab sapiente
-              doloremque consequuntur voluptate!
-            </p>
-          </div>
-
-          <div className=" p-4 flex items-end w-full gap-2 sm:gap-8 relative bottom-0 text-fourth grow ">
-            <p className="">
+          <div className="flex gap-3">
+            <p className="text-fourth">
               <span className="block text-xs align-bottom sm:text-base">
                 Precio
               </span>

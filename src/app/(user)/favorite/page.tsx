@@ -1,6 +1,7 @@
 "use client";
 
 import CardFavorite from "@/components/CardFavorite";
+import ArrowLeft from "@/components/icons/ArrowLeft";
 import useFavorite from "@/hooks/useFavorite";
 import { MenuI } from "@/lib/definitions";
 import Link from "next/link";
@@ -16,39 +17,27 @@ function Favorite() {
 
   return (
     <>
-      <div className="grow p-4">
-        <div className=" flex justify-center items-center text-center relative mb-8">
-          <Link
-            href="/home"
-            className="w-8 absolute left-0 rounded-full aspect-square bg-white sm:hidden"
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="30"
-              height="30"
-              viewBox="0 0 24 24"
-            >
-              <path d="M13.293 6.293 7.586 12l5.707 5.707 1.414-1.414L10.414 12l4.293-4.293z"></path>
-            </svg>
-          </Link>
-          <h2 className="text-second text-xl">Favorite</h2>
-        </div>
-        <div className="flex flex-col gap-4">
-          {favorites.length > 0 ? (
-            favorites?.map((item: MenuI) => (
-              <CardFavorite
-                key={item.id_menu}
-                menu={item}
-                handleclickRemove={handleclickRemove}
-              />
-            ))
-          ) : (
-            <div className="w-full  text-sm  bg-slate-700 text-white p-4 rounded-lg">
-              No hay Favoritos 😥
-            </div>
-          )}
-        </div>
-      </div>
+      <section className="flex items-center gap-2 text-second pb-8">
+        <Link href="/home" className="md:hidden">
+          <ArrowLeft />
+        </Link>
+        <h2 className="text-2xl">Comidas Favoritas</h2>
+      </section>
+      <ul className="flex flex-col gap-3">
+        {favorites.length > 0 ? (
+          favorites?.map((item: MenuI) => (
+            <CardFavorite
+              key={item.id_menu}
+              menu={item}
+              handleclickRemove={handleclickRemove}
+            />
+          ))
+        ) : (
+          <div className="w-full text-sm bg-slate-700 text-white p-4 rounded-lg">
+            No hay Favoritos 😥
+          </div>
+        )}
+      </ul>
     </>
   );
 }
