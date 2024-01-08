@@ -1,6 +1,6 @@
 "use client";
 import React from "react";
-import { useCounter } from "./counterContext";
+import { useCounter } from "../../global/CounterContext";
 import useCart from "@/hooks/useCart";
 import { MenuI } from "@/lib/definitions";
 import toast, { Toaster } from "react-hot-toast";

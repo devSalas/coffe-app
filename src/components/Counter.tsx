@@ -1,6 +1,6 @@
 "use client";
 
-import { useCounter } from "@/app/(user)/detail/[id]/counterContext";
+import { useCounter } from "@/global/CounterContext";
 import { clsx } from "clsx";
 
 interface Props {
@@ -43,5 +43,3 @@ function Counter({ size = "small" }: Props) {
 }
 
 export default Counter;
-
-// bg-second text-fourth flex items-center rounded-md

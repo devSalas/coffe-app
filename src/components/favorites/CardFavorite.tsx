@@ -1,4 +1,4 @@
-import AddToFavorite from "@/app/(user)/detail/[id]/AddToFavorite";
+import AddToFavorite from "@/components/favorites/AddToFavorite";
 import { MenuI } from "@/lib/definitions";
 import Link from "next/link";
 

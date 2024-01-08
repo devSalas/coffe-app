@@ -1,6 +1,6 @@
 "use client";
 
-import { useMenu } from "@/global/MenuFilterContext";
+import { useMenu } from "@/global/MenuContext";
 import { CategoryI } from "@/lib/definitions";
 
 function UserCategory() {

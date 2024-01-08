@@ -1,8 +1,8 @@
 "use client";
 
 import { MenuI } from "@/lib/definitions";
-import CardMenu from "./CardMenu";
-import { useMenu } from "@/global/MenuFilterContext";
+import MenuCard from "./MenuCard";
+import { useMenu } from "@/global/MenuContext";
 
 function CardContainer() {
   const { menus } = useMenu();
@@ -17,11 +17,11 @@ function CardContainer() {
     );
 
   return (
-    <div className="grid md:grid-cols-3 gap-3 py-4">
-      {menus.map((menu: MenuI) => (
-        <CardMenu key={menu.id_menu} menu={menu} />
+    <ul className="grid md:grid-cols-3 gap-3 py-4">
+      {menus.map((menu: MenuI, i: number) => (
+        <MenuCard key={menu.id_menu} menu={menu} delay={i} />
       ))}
-    </div>
+    </ul>
   );
 }
 

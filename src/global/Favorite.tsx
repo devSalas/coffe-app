@@ -5,7 +5,7 @@ import { createContext, ReactNode, useState, FC } from "react";
 export const FavoriteContext = createContext<PropsValue | undefined>(undefined);
 
 interface PropsValue {
-  addToFavorite: (menu: MenuI) => void;
+  addToFavorite: (menu: MenuI) => boolean;
   removeToFavorite: (menu: MenuI) => void;
   favorites: MenuI[];
   isFavorite: (id: number) => Boolean;

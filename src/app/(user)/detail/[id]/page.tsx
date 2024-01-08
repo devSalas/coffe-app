@@ -3,8 +3,8 @@ import { getMenu } from "@/lib/data";
 import Link from "next/link";
 
 //counter context
-import ButtonAddCart from "./ButtonAddCart";
-import AddToFavorite from "./AddToFavorite";
+import ButtonAddCart from "../../../../components/Detail/ButtonAddCart";
+import AddToFavorite from "../../../../components/favorites/AddToFavorite";
 
 async function MenuId({ params }: any) {
   const { data: menu } = await getMenu(params.id);

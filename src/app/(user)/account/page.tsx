@@ -11,11 +11,9 @@ function Account() {
     verificarSesion();
   }, [verificarSesion]);
 
-  console.log(isAuthenticated, user);
-
   if (isAuthenticated) {
     return (
-      <div className="">
+      <>
         <header className="py-8 flex items-center gap-4">
           <img
             className="bg-neutral-700 w-20 h-20 rounded-full"
@@ -35,7 +33,7 @@ function Account() {
             Cerrar Sesion
           </button>
         </nav>
-      </div>
+      </>
     );
   }
 

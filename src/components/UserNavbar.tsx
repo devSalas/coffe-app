@@ -19,8 +19,8 @@ function Navbar() {
 
   return (
     <>
-      <section className="fixed bottom-0 left-0 z-50 w-full py-4 px-8 bg-black sm:hidden">
-        <nav className="flex  justify-between">
+      <section className="fixed bottom-0 left-0 z-50 w-full py-2 bg-black sm:hidden">
+        <nav className="flex  justify-evenly">
           <Link
             className={`flex flex-col items-center p-2 hover:text-second ${
               pathname === "/home" ? "text-second" : "text-neutral-500"

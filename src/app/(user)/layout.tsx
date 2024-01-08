@@ -1,9 +1,9 @@
 import Navbar from "@/components/UserNavbar";
 import CartProvider from "@/global/Cart";
 import FavoriteProvider from "@/global/Favorite";
-import { CounterProvider } from "./detail/[id]/counterContext";
+import { CounterProvider } from "@/global/CounterContext";
 import React from "react";
-import { MenuProvider } from "@/global/MenuFilterContext";
+import { MenuProvider } from "@/global/MenuContext";
 
 export default function layout({ children }: { children: React.ReactNode }) {
   return (
@@ -14,7 +14,7 @@ export default function layout({ children }: { children: React.ReactNode }) {
             <main className="md:px-8 px-4 bg-black min-h-screen text-neutral-500">
               <section className="max-w-7xl mx-auto flex gap-8 relative">
                 <Navbar />
-                <div className="w-full py-16">{children}</div>
+                <div className="w-full md:py-16 pt-16 pb-24">{children}</div>
               </section>
             </main>
           </MenuProvider>

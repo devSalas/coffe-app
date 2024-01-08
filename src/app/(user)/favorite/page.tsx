@@ -1,6 +1,6 @@
 "use client";
 
-import CardFavorite from "@/components/CardFavorite";
+import CardFavorite from "@/components/favorites/CardFavorite";
 import ArrowLeft from "@/components/icons/ArrowLeft";
 import useFavorite from "@/hooks/useFavorite";
 import { MenuI } from "@/lib/definitions";
