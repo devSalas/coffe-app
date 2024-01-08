@@ -59,7 +59,7 @@ function Navbar() {
           </Link>
         </nav>
       </section>
-      <section className="hidden sm:block h-screen left-0 w-44 py-16">
+      <section className="hidden sm:block h-screen left-0 w-44 pb-16">
         <div className="h-full flex flex-col">
           <nav className="flex-1 flex flex-col gap-2">
             <Link
