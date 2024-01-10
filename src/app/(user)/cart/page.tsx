@@ -9,7 +9,6 @@ import toast, { Toaster } from "react-hot-toast";
 function Cart() {
   const { cart} = useCart();
   const { user, token } = useSesion()
-/*   const btnModalRef = useRef<HTMLButtonElement>(null) */
   const showModalRef = useRef<HTMLDivElement>(null)
   let totalPrice;
   let subtotal = 0;
@@ -36,7 +35,9 @@ function Cart() {
   }
   const handleClickAceptar = () => {
     try {
-      const { id_user } = user
+
+      if(!user) return toast.error("Para realizar compras, tienes que registrarte")
+      const {id_user} =user
       cart.forEach(item => {
         const { id_menu, quantity} = item
         addOrder({ menu_id: id_menu, user_id: id_user, amount:  quantity  , payment_method: "contado" }, token)
@@ -45,6 +46,7 @@ function Cart() {
       toast.success(`Solicitud existosa!`);
     } catch (err: any) {
       console.log(err.message)
+      
       toast.success(`Error al solicitar orden!`);
     }
   }
