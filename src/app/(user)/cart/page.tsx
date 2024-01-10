@@ -47,7 +47,7 @@ function Cart() {
     } catch (err: any) {
       console.log(err.message)
       
-      toast.success(`Error al solicitar orden!`);
+      toast.error(`Error al solicitar orden!`);
     }
   }
 
