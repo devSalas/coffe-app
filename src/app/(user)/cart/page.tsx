@@ -2,7 +2,6 @@
 
 import CarMenuCart from "@/components/Cart/CardMenuCart";
 import useCart from "@/hooks/useCart";
-import Link from "next/link";
 
 function Cart() {
   const { cart } = useCart();
