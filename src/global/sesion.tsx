@@ -1,5 +1,5 @@
 "use client";
-import React, { createContext, useContext, useState } from "react";
+import React, { createContext, useContext, useState, useEffect } from "react";
 import { login, signup, verifyToken } from "@/lib/data";
 import { guardarToken, recuperarToken, eliminarToken } from "@/lib/token";
 import { useRouter } from "next/navigation";
@@ -10,11 +10,18 @@ export const SesionProvider = ({ children }: { children: React.ReactNode }) => {
   const [user, setUser] = useState(null);
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [token, setToken] = useState(null);
+  const [isLoading, setIsLoading] = useState(false);
 
   const router = useRouter();
 
+  useEffect(() => {
+    verificarSesion();
+  }, []);
+
   const iniciarSesion = async (user: any) => {
+    setIsLoading(true);
     const res = await login(user);
+    setIsLoading(false);
     if (res) {
       console.log(res);
       guardarToken(res.token);
@@ -28,11 +35,13 @@ export const SesionProvider = ({ children }: { children: React.ReactNode }) => {
         router.push("/home");
       }
     }
-    return res
+    return res;
   };
 
   const registrarse = async (user: any) => {
+    setIsLoading(true);
     const res = await signup(user);
+    setIsLoading(false);
     if (res) {
       setUser(res.data);
       iniciarSesion({
@@ -40,7 +49,7 @@ export const SesionProvider = ({ children }: { children: React.ReactNode }) => {
         password: user.password,
       });
     }
-    return res
+    return res;
   };
 
   const cerrarSesion = () => {
@@ -53,7 +62,9 @@ export const SesionProvider = ({ children }: { children: React.ReactNode }) => {
 
   const verificarSesion = async () => {
     const token = recuperarToken();
+    setIsLoading(true);
     const res = await verifyToken(token);
+    setIsLoading(false);
     if (res === null) {
       setToken(null);
       setUser(null);
@@ -70,6 +81,7 @@ export const SesionProvider = ({ children }: { children: React.ReactNode }) => {
       value={{
         user,
         isAuthenticated,
+        isLoading,
         token,
         iniciarSesion,
         registrarse,

@@ -1,15 +1,15 @@
 "use client";
-import React, { useEffect } from "react";
+
 import { useSesion } from "@/global/sesion";
 import Navbar from "@/components/Navbar";
 import Link from "next/link";
 
 export default function Layout({ children }: { children: React.ReactNode }) {
-  const { user, isAuthenticated, verificarSesion } = useSesion();
+  const { user, isAuthenticated, isLoading } = useSesion();
 
-  useEffect(() => {
-    verificarSesion();
-  }, [verificarSesion]);
+  if (isLoading) return <div>cargando...</div>;
+
+  if (!isAuthenticated) return <div>no autorizado</div>;
 
   return (
     <>

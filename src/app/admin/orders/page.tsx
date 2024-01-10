@@ -7,7 +7,7 @@ import Table from "@/components/Table/Table";
 import TableHead from "@/components/Table/TableHead";
 import TableCell from "@/components/Table/TableCell";
 import Header from "@/components/Admin/Header";
-import { formatearFecha } from "@/lib/utils";
+import dayjs from "dayjs";
 
 export default function Page() {
   const [orders, setOrders] = useState<OrderI[]>([]);
@@ -52,7 +52,9 @@ export default function Page() {
                   <TableCell>{menu.name}</TableCell>
                   <TableCell>{user.name}</TableCell>
                   <TableCell>{amount}</TableCell>
-                  <TableCell>{order_date}</TableCell>
+                  <TableCell>
+                    {dayjs(order_date).format("hh:mm - DD/MM/YY")}
+                  </TableCell>
                   <TableCell>{total_price}</TableCell>
                   <TableCell>
                     <span className="text-sm bg-orange-400 py-1 px-3 rounded-full">
@@ -97,7 +99,7 @@ export default function Page() {
                   {menu.name} S/{menu.price} x {amount} = S/{total_price}
                 </p>
                 <p className="text-sm text-orange-700">
-                  {formatearFecha(order_date)}
+                  {dayjs(order_date).format("hh:mm - DD/MM/YY")}
                 </p>
               </li>
             )

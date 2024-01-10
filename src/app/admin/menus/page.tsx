@@ -81,16 +81,18 @@ export default function Page() {
                 <TableHead>ID</TableHead>
                 <TableHead>Name</TableHead>
                 <TableHead>Description</TableHead>
+                <TableHead>Categoria</TableHead>
                 <TableHead>Price</TableHead>
                 <TableHead></TableHead>
               </tr>
             </thead>
             <tbody>
-              {menus?.map(({ id_menu, name, description, price }) => (
+              {menus?.map(({ id_menu, name, description, category, price }) => (
                 <tr key={id_menu} className="border-b">
                   <TableCell>{id_menu}</TableCell>
                   <TableCell>{name}</TableCell>
                   <TableCell>{description}</TableCell>
+                  <TableCell>{category.name}</TableCell>
                   <TableCell>S/{price}</TableCell>
                   <TableCell>
                     <div className="flex md:flex-row flex-col gap-1">

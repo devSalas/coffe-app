@@ -5,11 +5,9 @@ import { useSesion } from "@/global/sesion";
 import Link from "next/link";
 
 function Account() {
-  const { isAuthenticated, user, cerrarSesion, verificarSesion } = useSesion();
+  const { isAuthenticated, user, cerrarSesion, isLoading } = useSesion();
 
-  useEffect(() => {
-    verificarSesion();
-  }, [verificarSesion]);
+  if (isLoading) return <div>cargando...</div>;
 
   if (isAuthenticated) {
     return (

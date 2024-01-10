@@ -141,9 +141,8 @@ export const addOrder = async (order:any, token:string) => {
   };
 
   const res = await fetch(`${URL}/orders`, opciones);
-
   if (!res.ok) {
-    throw new Error("error al añadir una categoria");
+    throw new Error("error al añadir una orden");
   }
 
   return await res.json();
