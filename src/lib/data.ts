@@ -130,6 +130,26 @@ export const getOrders = async () => {
 };
 
 
+export const addOrder = async (order:any, token:string) => {
+  const opciones = {
+    method: "POST",
+    headers: {
+      'Authorization': `Bearer ${token}`,
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(order),
+  };
+
+  const res = await fetch(`${URL}/orders`, opciones);
+
+  if (!res.ok) {
+    throw new Error("error al añadir una categoria");
+  }
+
+  return await res.json();
+};
+
+
 export const addMenu = async (menu:any, token:string) => {
     const opciones = {
       method: "POST",
