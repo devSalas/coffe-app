@@ -56,19 +56,19 @@ export default function Page() {
           </thead>
           <tbody>
             {categories?.map(({ id_category, name }) => (
-              <tr key={id_category} className="border-b">
+              <tr key={id_category} className="border-b border-orange-200">
                 <TableCell>{id_category}</TableCell>
                 <TableCell>{name}</TableCell>
                 <TableCell>
                   <div>
                     <Link
-                      className="p-2 text-sm text-center text-orange-800 hover:underline rounded"
+                      className="p-2 text-sm text-center text-orange-300 hover:underline rounded"
                       href={`/admin/categories/edit/${id_category}`}
                     >
                       Editar
                     </Link>
                     <button
-                      className="bg-red-400 text-sm hover:bg-red-500 p-2 text-white rounded"
+                      className="bg-red-500 text-sm hover:bg-red-400 p-2 text-white rounded"
                       onClick={() => handleClick(id_category)}
                     >
                       Eliminar

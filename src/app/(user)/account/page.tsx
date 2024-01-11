@@ -1,6 +1,5 @@
 "use client";
 
-import { useEffect } from "react";
 import { useSesion } from "@/global/sesion";
 import Link from "next/link";
 

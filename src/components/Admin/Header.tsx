@@ -14,12 +14,12 @@ export default function Header({ title }: { title: string }) {
   return (
     <header className="flex items-center gap-4 py-4">
       <button
-        className="text-orange-800 hover:text-orange-600 flex items-center gap-2"
+        className="text-orange-200 hover:text-orange-300 flex items-center gap-2"
         onClick={handleClick}
       >
         <ArrowLeft />
       </button>
-      <h1 className="text-orange-800 text-lg pr-6 flex-1 text-center md:text-start">
+      <h1 className="text-orange-200 text-lg pr-6 flex-1 text-center md:text-start">
         {title}
       </h1>
     </header>

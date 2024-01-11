@@ -88,7 +88,7 @@ export default function Page() {
             </thead>
             <tbody>
               {menus?.map(({ id_menu, name, description, category, price }) => (
-                <tr key={id_menu} className="border-b">
+                <tr key={id_menu} className="border-b border-orange-200">
                   <TableCell>{id_menu}</TableCell>
                   <TableCell>{name}</TableCell>
                   <TableCell>{description}</TableCell>
@@ -97,13 +97,13 @@ export default function Page() {
                   <TableCell>
                     <div className="flex md:flex-row flex-col gap-1">
                       <Link
-                        className="p-2 text-sm text-center text-orange-800 hover:underline rounded"
+                        className="p-2 text-sm text-center text-orange-300 hover:underline rounded"
                         href={`/admin/menus/edit/${id_menu}`}
                       >
                         Editar
                       </Link>
                       <button
-                        className="bg-red-400 text-sm hover:bg-red-500 p-2 text-white rounded"
+                        className="bg-red-500 text-sm hover:bg-red-400 p-2 text-white rounded"
                         onClick={() => handleClick(id_menu)}
                       >
                         Eliminar
@@ -120,7 +120,7 @@ export default function Page() {
             {menus?.map(({ id_menu, name, description, price }, i) => (
               <li
                 key={id_menu}
-                className="bg-orange-100 p-4 rounded-lg h-40 flex flex-col gap-2 fadeIn"
+                className="bg-orange-200 p-4 rounded-lg h-40 flex flex-col gap-2 fadeIn"
                 style={{ animationDelay: `.${i}s` }}
               >
                 <header className="flex justify-between text-orange-800">

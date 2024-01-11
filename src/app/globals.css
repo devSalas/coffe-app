@@ -9,6 +9,10 @@
   }
 }
 
+body {
+  @apply bg-black;
+}
+
 .fadeIn{
   animation: fadeIn .2s ease-out both;
 }
