@@ -91,7 +91,7 @@ export default function Page() {
         <Button classN="h-14 text-lg font-semibold">
         {(loading) 
             ? <Spinner/>
-            : "Iniciar sesion"
+            : "Registrate"
             }
         </Button>
         <p className="text-end text-white text-lg">
