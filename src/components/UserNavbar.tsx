@@ -10,9 +10,11 @@ import {
 import { usePathname } from "next/navigation";
 import useFavorite from "@/hooks/useFavorite";
 import useCart from "@/hooks/useCart";
+import { useSesion } from "@/global/sesion";
 
 function Navbar() {
   const pathname = usePathname();
+  const { isAuthenticated, cerrarSesion } = useSesion();
 
   const { count } = useFavorite();
   const { count: cartCounter } = useCart();
@@ -59,6 +61,8 @@ function Navbar() {
           </Link>
         </nav>
       </section>
+
+      {/* pantalla grande */}
       <section className="hidden sm:block h-screen left-0 w-44 pb-16">
         <div className="h-full flex flex-col">
           <nav className="flex-1 flex flex-col gap-2">
@@ -110,22 +114,30 @@ function Navbar() {
             </Link>
           </nav>
           <nav className="flex flex-col gap-2">
-            <Link
-              className={`flex gap-2 items-center p-2 hover:text-second ${
-                pathname === "/signup" ? "text-second" : "text-neutral-500"
-              }`}
-              href={"/signup"}
-            >
-              Registrarse
-            </Link>
-            <Link
-              className={`flex gap-2 items-center p-2 hover:text-second ${
-                pathname === "/login" ? "text-second" : "text-neutral-500"
-              }`}
-              href={"/login"}
-            >
-              Inicia Sesion
-            </Link>
+            {isAuthenticated ? (
+              <button className="p-2" onClick={() => cerrarSesion()}>
+                Cerrar sesion
+              </button>
+            ) : (
+              <>
+                <Link
+                  className={`flex gap-2 items-center p-2 hover:text-second ${
+                    pathname === "/signup" ? "text-second" : "text-neutral-500"
+                  }`}
+                  href={"/signup"}
+                >
+                  Registrarse
+                </Link>
+                <Link
+                  className={`flex gap-2 items-center p-2 hover:text-second ${
+                    pathname === "/login" ? "text-second" : "text-neutral-500"
+                  }`}
+                  href={"/login"}
+                >
+                  Inicia Sesion
+                </Link>
+              </>
+            )}
           </nav>
         </div>
       </section>

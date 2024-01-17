@@ -22,13 +22,21 @@ function Account() {
             <p>{user.email}</p>
           </div>
         </header>
-        <nav>
+        <nav className="flex gap-4">
           <button
             className="bg-neutral-500 px-4 py-2 text-white rounded"
             onClick={() => cerrarSesion()}
           >
             Cerrar Sesion
           </button>
+          {user.role === "admin" && (
+            <Link
+              className="bg-neutral-500 px-4 py-2 text-white rounded"
+              href={"/admin"}
+            >
+              Panel Admin
+            </Link>
+          )}
         </nav>
       </>
     );
