@@ -33,14 +33,14 @@ export default function Navbar() {
   return (
     <>
       <button
-        className="md:hidden absolute right-4 top-2 z-50 p-2 text-orange-900"
+        className="md:hidden absolute right-4 top-2 z-50 p-2 text-orange-200"
         onClick={handleClick}
       >
         <Bars />
       </button>
       <aside className="md:flex flex-col hidden h-screen py-8 px-4 w-60">
         <header className="py-8">
-          <Link className="text-orange-900 text-2xl font-bold" href={"/admin"}>
+          <Link className="text-orange-200 text-2xl font-bold" href={"/admin"}>
             Coffe App
           </Link>
         </header>
@@ -48,8 +48,10 @@ export default function Navbar() {
           {links.map(({ label, route }) => (
             <Link
               key={route}
-              className={`text-orange-600 p-2 rounded hover:bg-orange-100 ${
-                pathname === route ? "bg-orange-200 " : ""
+              className={`p-2 rounded hover:text-orange-800 hover:bg-orange-300 ${
+                pathname === route
+                  ? "bg-orange-300 text-orange-800"
+                  : "text-orange-300"
               }`}
               href={route}
             >
@@ -65,10 +67,10 @@ export default function Navbar() {
             className="absolute inset-0 z-10 bg-black/50 "
             onClick={handleClick}
           ></div>
-          <aside className="bg-white absolute bottom-0 z-40 w-full rounded-t-3xl fadeIn flex flex-col gap-8 px-8 py-16">
+          <aside className="bg-neutral-950 absolute bottom-0 z-40 w-full rounded-t-3xl fadeIn flex flex-col gap-8 px-8 py-16">
             <header className="">
               <Link
-                className="text-orange-900 text-2xl font-bold"
+                className="text-orange-200 text-2xl font-bold"
                 href={"/admin"}
                 onClick={handleClick}
               >
@@ -79,8 +81,10 @@ export default function Navbar() {
               {links.map(({ label, route }) => (
                 <Link
                   key={route}
-                  className={`text-orange-600 p-4  rounded hover:bg-orange-100 ${
-                    pathname === route ? "bg-orange-200 " : ""
+                  className={` p-4  rounded hover:bg-orange-200 hover:text-orange-700 ${
+                    pathname === route
+                      ? "bg-orange-200 text-orange-700"
+                      : "text-orange-300"
                   }`}
                   href={route}
                   onClick={handleClick}

@@ -3,6 +3,11 @@ import UserCategory from "@/components/UserCategory";
 import CardContainer from "@/components/Home/MenusList";
 import HeaderHome from "@/components/HeaderHome";
 
+export const metadata = {
+  title: "Home",
+  description: "Pagina de inicio",
+};
+
 async function Home() {
   return (
     <div>

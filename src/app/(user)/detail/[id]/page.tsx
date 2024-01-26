@@ -6,6 +6,14 @@ import Link from "next/link";
 import ButtonAddCart from "../../../../components/Detail/ButtonAddCart";
 import AddToFavorite from "../../../../components/favorites/AddToFavorite";
 
+export async function generateMetadata({ params }: any) {
+  const { data: menu } = await getMenu(params.id);
+
+  return {
+    title: `${menu.name}`,
+  };
+}
+
 async function MenuId({ params }: any) {
   const { data: menu } = await getMenu(params.id);
 

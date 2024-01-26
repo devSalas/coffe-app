@@ -86,7 +86,7 @@ export default function Page() {
             ) => (
               <li
                 key={id_order}
-                className="fadeIn p-4 bg-orange-100 rounded-xl flex flex-col gap-4"
+                className="fadeIn p-4 bg-orange-200 rounded-xl flex flex-col gap-4"
                 style={{ animationDelay: `.${i}s` }}
               >
                 <header className="flex justify-between">
