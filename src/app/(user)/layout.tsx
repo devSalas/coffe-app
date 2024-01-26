@@ -12,9 +12,9 @@ export default function layout({ children }: { children: React.ReactNode }) {
       <FavoriteProvider>
         <CounterProvider>
           <MenuProvider>
-            <main className="md:px-8 px-4 bg-black min-h-screen text-neutral-500">
+            <main className="relative md:px-8 px-4 bg-black min-h-screen text-neutral-500">
               <HeaderHome />
-              <section className="max-w-7xl mx-auto flex gap-8 relative">
+              <section className="max-w-7xl mx-auto flex gap-8 ">
                 <Navbar />
                 <div className="w-full pb-24">{children}</div>
               </section>

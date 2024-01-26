@@ -13,8 +13,8 @@ async function MenuId({ params }: any) {
 
   return (
     <>
-      <section className="grid md:grid-cols-2 gap-8">
-        <figure>
+      <section className="grid md:grid-cols-1 gap-8 place-content-center pt-4">
+        <figure className="max-w-2xl rounded-lg overflow-hidden m-auto">
           <img
             className="w-full h-full object-contain object-top"
             src={menu.url}
@@ -22,27 +22,29 @@ async function MenuId({ params }: any) {
           />
         </figure>
 
-        <section className="flex flex-col gap-4">
-          <header className="flex justify-between items-center ">
-            <h2 className="text-fourth text-2xl">{menu.name}</h2>
+        <section className="max-w-2xl m-auto flex flex-col gap-8">
+          <header className="flex justify-between items-center md:text-center ">
+            <h2 className="text-fourth text-2xl md:text-3xl ">{menu.name}</h2>
             <AddToFavorite menu={menu} />
           </header>
 
-          <h3 className="text-fourth">Descripcion</h3>
-          <p className="text-sm text-neutral-400">{menu.description}</p>
-          <p className="text-sm text-neutral-400">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis
-            maxime itaque corporis non labore rerum delectus nobis placeat
-            porro, iste, deleniti nisi est? Laudantium illo architecto mollitia
-            ad, ex laborum. Lorem ipsum dolor sit amet consectetur adipisicing
-            elit.
-          </p>
+          <div>
+            <h3 className="text-fourth mb-2">Descripcion</h3>
+            <p className="text-sm md:text-base text-neutral-400">{menu.description}</p>
+            <p className="text-sm sm:text-base text-neutral-400">
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis
+              maxime itaque corporis non labore rerum delectus nobis placeat
+              porro, iste, deleniti nisi est? Laudantium illo architecto mollitia
+              ad, ex laborum. Lorem ipsum dolor sit amet consectetur adipisicing
+              elit.
+            </p>
+          </div>
           <div className="flex gap-3 items-center">
             <p className="text-neutral-300">Cantidad:</p>
             <Counter size="large" />
           </div>
 
-          <div className="flex gap-3">
+          <div className="flex gap-8">
             <p className="text-fourth">
               <span className="block text-xs align-bottom sm:text-base">
                 Precio

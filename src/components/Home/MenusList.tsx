@@ -17,7 +17,7 @@ function CardContainer() {
     );
 
   return (
-    <ul className="grid md:grid-cols-3 gap-3 py-4">
+    <ul className="grid md:grid-cols-2 lg:grid-cols-3 gap-5 py-4">
       {menus.map((menu: MenuI, i: number) => (
         <MenuCard key={menu.id_menu} menu={menu} delay={i} />
       ))}

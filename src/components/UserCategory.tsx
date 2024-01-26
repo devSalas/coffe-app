@@ -21,7 +21,7 @@ function UserCategory() {
       key={id_category}
       className={`bg-${
         categorySelect === name ? "second" : "third"
-      } text-fourth py-1 px-6 rounded-2xl cursor-pointer `}
+      } text-fourth py-2 px-8 rounded-full cursor-pointer `}
     >
       {name}
     </div>

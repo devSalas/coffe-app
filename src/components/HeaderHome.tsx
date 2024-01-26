@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { dancingScript } from "@/app/fonts";
+import { dancingScript, PoppinsFont} from "@/app/fonts";
 import ArrowLeft from "./icons/ArrowLeft";
 import { useRouter } from "next/navigation";
 
@@ -20,8 +20,8 @@ export default function HeaderHome() {
       <div className="">
         <h2
           className={
-            dancingScript.className +
-            " text-second text-3xl md:text-left text-center"
+            PoppinsFont.className +
+            " text-second  text-3xl md:text-4xl md:max-w-7xl md:m-auto  text-center mt-5 "
           }
         >
           Cafeteria Empresarial
