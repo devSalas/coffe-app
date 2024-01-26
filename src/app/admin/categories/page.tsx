@@ -18,7 +18,9 @@ export default function Page() {
   const { token } = useSesion();
   useEffect(() => {
     getCategories().then((res) => {
-      setCategories(res.data);
+      if (res) {
+        setCategories(res);
+      }
     });
   }, []);
 

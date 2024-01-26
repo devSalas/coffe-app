@@ -14,7 +14,9 @@ export default function Page() {
 
   useEffect(() => {
     getOrders().then((res) => {
-      setOrders(res.data);
+      if (res) {
+        setOrders(res);
+      }
     });
   }, []);
 

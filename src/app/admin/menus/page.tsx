@@ -23,8 +23,10 @@ export default function Page() {
   const router = useRouter();
 
   useEffect(() => {
-    getMenus(seachParams.get("search") ?? "").then((res) => {
-      setMenus(res.data);
+    getMenus({ search: seachParams.get("search") ?? "" }).then((res) => {
+      if (res) {
+        setMenus(res);
+      }
     });
   }, []);
 
@@ -48,8 +50,10 @@ export default function Page() {
 
     router.replace(`${pathname}?${params.toString()}`);
 
-    getMenus(seachParams.get("search") ?? "").then((res) => {
-      setMenus(res.data);
+    getMenus({ search: seachParams.get("search") ?? "" }).then((res) => {
+      if (res) {
+        setMenus(res);
+      }
     });
   };
 

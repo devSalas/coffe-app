@@ -13,6 +13,19 @@ body {
   @apply bg-black;
 }
 
+
 .fadeIn{
   animation: fadeIn .2s ease-out both;
+}
+
+@keyframes zoom {
+  to {
+    transform: scale(110%);
+  }
+}
+@media screen and (max-width: 768px) {
+  .zoom-scroll {
+    animation: zoom linear both;
+    animation-timeline: scroll();
+  }
 }

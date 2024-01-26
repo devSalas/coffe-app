@@ -9,6 +9,7 @@ import { useSesion } from "@/global/sesion";
 import Select from "@/components/ui/Select";
 import Textarea from "@/components/ui/Textarea";
 import Header from "@/components/Admin/Header";
+import { CategoryI } from "@/lib/definitions";
 
 export default function Page() {
   const [menu, setMenu] = useState({
@@ -18,12 +19,14 @@ export default function Page() {
     price: 1,
     category_id: 0,
   });
-  const [categories, setCategories] = useState([]);
+  const [categories, setCategories] = useState<CategoryI[]>([]);
   const { token } = useSesion();
 
   useEffect(() => {
     getCategories().then((res) => {
-      setCategories(res.data);
+      if (res) {
+        setCategories(res);
+      }
     });
   }, []);
 
