@@ -21,15 +21,15 @@ export default async function MenuPage({ params }: { params: { id: string } }) {
   if (!menu) return <div></div>;
 
   return (
-    <div className=" flex flex-col gap-6">
-      <div className="md:static fixed inset-0 -z-50">
+    <div className="flex flex-col gap-6">
+      <div className="md:static fixed inset-0 z-40">
         <img
           className="zoom-scroll md:rounded-3xl md:h-96 md:w-full object-cover"
           src={menu.url}
           alt={menu.name}
         />
       </div>
-      <section className="md:static absolute inset-0 z-40 flex flex-col">
+      <section className="md:static absolute top-0 inset-x-0 z-50 flex flex-col">
         {/* espacio en blanco */}
         <article className="aspect-video block md:hidden p-4">
           <Link

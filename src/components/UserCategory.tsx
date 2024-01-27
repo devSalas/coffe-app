@@ -17,7 +17,7 @@ function UserCategory({ categories }: { categories: CategoryI[] | null }) {
     ); */
 
   return (
-    <div className="flex gap-2 overflow-hidden">
+    <div className="flex gap-2 overflow-x-scroll">
       <Link
         href={`/home`}
         className={`bg-${
