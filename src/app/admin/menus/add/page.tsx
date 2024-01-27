@@ -4,7 +4,7 @@ import Button from "@/components/ui/Button";
 import Label from "@/components/ui/Label";
 import Input from "@/components/ui/Input";
 import { addMenu, getCategories } from "@/lib/data";
-import toast, { Toaster } from "react-hot-toast";
+import toast from "react-hot-toast";
 import { useSesion } from "@/global/sesion";
 import Select from "@/components/ui/Select";
 import Textarea from "@/components/ui/Textarea";
@@ -114,7 +114,6 @@ export default function Page() {
           </Label>
         </div>
         <Button>Crear menu</Button>
-        <Toaster />
       </form>
     </div>
   );

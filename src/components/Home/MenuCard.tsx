@@ -19,7 +19,7 @@ function CardMenu({ menu, delay }: Props) {
           src={menu.url}
           alt={menu.name}
         />
-        <section className="bg-neutral-900/90 backdrop-blur-3xl absolute bottom-0 inset-x-0 p-3">
+        <section className="bg-neutral-900 absolute bottom-0 inset-x-0 p-3">
           <h4 className="text-neutral-200">{menu.name}</h4>
           <p className="text-neutral-400">S/ {menu.price}</p>
         </section>

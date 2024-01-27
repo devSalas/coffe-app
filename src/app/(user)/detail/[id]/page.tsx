@@ -23,7 +23,11 @@ async function MenuId({ params }: { params: { id: string } }) {
   return (
     <div className="grid lg:grid-cols-2 gap-6">
       <div className="md:static fixed inset-0 -z-50">
-        <img className="zoom-scroll" src={menu.url} alt={menu.name} />
+        <img
+          className="zoom-scroll md:rounded"
+          src={menu.url}
+          alt={menu.name}
+        />
       </div>
       <div className="md:static absolute inset-0 z-40 flex flex-col">
         <div className="aspect-video block md:hidden p-4">

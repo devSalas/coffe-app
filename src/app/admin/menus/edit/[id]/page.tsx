@@ -4,11 +4,11 @@ import Button from "@/components/ui/Button";
 import Label from "@/components/ui/Label";
 import Input from "@/components/ui/Input";
 import { getMenuById, getCategories, editMenu } from "@/lib/data";
-import toast, { Toaster } from "react-hot-toast";
+import toast from "react-hot-toast";
 import { useSesion } from "@/global/sesion";
 import { useParams } from "next/navigation";
 import Header from "@/components/Admin/Header";
-import { CategoryI, MenuI } from "@/lib/definitions";
+import { CategoryI } from "@/lib/definitions";
 
 export default function Page() {
   const [menu, setMenu] = useState<any>({
@@ -118,7 +118,6 @@ export default function Page() {
             </select>
           </Label>
           <Button>Guardar</Button>
-          <Toaster />
         </form>
       </section>
     </>

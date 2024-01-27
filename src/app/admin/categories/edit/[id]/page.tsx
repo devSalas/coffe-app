@@ -4,13 +4,13 @@ import Button from "@/components/ui/Button";
 import Label from "@/components/ui/Label";
 import Input from "@/components/ui/Input";
 import { getCategories, editCategory } from "@/lib/data";
-import toast, { Toaster } from "react-hot-toast";
+import toast from "react-hot-toast";
 import { useSesion } from "@/global/sesion";
 import Header from "@/components/Admin/Header";
 import { useParams } from "next/navigation";
 
 export default function Page() {
-  const [category, setCategory] = useState({
+  const [category, setCategory] = useState<any>({
     name: "",
   });
   const { token } = useSesion();
@@ -19,8 +19,10 @@ export default function Page() {
 
   useEffect(() => {
     getCategories().then((res) => {
-      const result = res.data.find((c: any) => c.id_category === Number(id));
-      setCategory(result);
+      if (res) {
+        const result = res.find((c: any) => c.id_category === Number(id));
+        setCategory(result);
+      }
     });
   }, [id]);
 
@@ -36,7 +38,7 @@ export default function Page() {
 
   const handleChange = (e: any) => {
     const { name, value } = e.target;
-    setCategory((prevData) => ({ ...prevData, [name]: value }));
+    setCategory((prevData: any) => ({ ...prevData, [name]: value }));
   };
 
   return (
@@ -54,7 +56,6 @@ export default function Page() {
           />
         </Label>
         <Button>Guardar</Button>
-        <Toaster />
       </form>
     </div>
   );
