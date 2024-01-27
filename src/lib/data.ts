@@ -258,7 +258,7 @@ export const getOrders = async (): Promise<OrderI[] | null> => {
 };
 
 
-export const addOrder = async (order:OrderI, token:string): Promise<OrderI[] | null>  => {
+export const addOrder = async (order:any, token:string): Promise<OrderI[] | null>  => {
   const opciones = {
     method: "POST",
     headers: {

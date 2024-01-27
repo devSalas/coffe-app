@@ -10,7 +10,7 @@ interface Props {
 function CardMenu({ menu, delay }: Props) {
   return (
     <li
-      className="relative aspect-video rounded-xl overflow-hidden"
+      className="relative aspect-video rounded-xl overflow-hidden fadeIn"
       style={{ animationDelay: `0.${delay}s` }}
     >
       <Link href={`/detail/${menu.id_menu}`}>

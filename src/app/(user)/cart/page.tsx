@@ -3,6 +3,7 @@
 import CarMenuCart from "@/components/Cart/CardMenuCart";
 import useCart from "@/hooks/useCart";
 import { addOrder } from "@/lib/data";
+import Modal from "./modal";
 
 export default function Cart() {
   const { cart } = useCart();
@@ -16,10 +17,6 @@ export default function Cart() {
       return accumulator + Number(currentItem.price) * currentItem.quantity;
     }, 0);
   }
-
-  const handleClick = () => {
-    alert("orden añadida");
-  };
 
   return (
     <>
@@ -49,17 +46,7 @@ export default function Cart() {
             <h3>Total</h3>
             <span>S/{totalPrice || 0}</span>
           </div>
-          <button
-            className={`${
-              cart.length === 0
-                ? "bg-neutral-800 text-neutral-500"
-                : "bg-second text-white hover:bg-orange-500"
-            } w-full p-3 rounded`}
-            disabled={cart.length === 0}
-            onClick={handleClick}
-          >
-            Enviar Orden
-          </button>
+          <Modal />
         </article>
       </section>
     </>
