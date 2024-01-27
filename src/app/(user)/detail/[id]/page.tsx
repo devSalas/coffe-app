@@ -1,70 +1,61 @@
 import Counter from "@/components/Counter";
-import { getMenu } from "@/lib/data";
-import Link from "next/link";
+import { getMenuById } from "@/lib/data";
 
 //counter context
-import ButtonAddCart from "../../../../components/Detail/ButtonAddCart";
-import AddToFavorite from "../../../../components/favorites/AddToFavorite";
+import ButtonAddCart from "@/components/Detail/ButtonAddCart";
+import AddToFavorite from "@/components/favorites/AddToFavorite";
+import Link from "next/link";
+import ArrowLeft from "@/components/icons/ArrowLeft";
 
 export async function generateMetadata({ params }: any) {
-  const { data: menu } = await getMenu(params.id);
+  const menu = await getMenuById(params.id);
 
   return {
-    title: `${menu.name}`,
+    title: `${menu?.name}`,
   };
 }
 
-async function MenuId({ params }: any) {
-  const { data: menu } = await getMenu(params.id);
+async function MenuId({ params }: { params: { id: string } }) {
+  const menu = await getMenuById(params.id);
 
-  console.log("--> menu", menu);
+  if (!menu) return <div></div>;
 
   return (
-    <>
-      <section className="grid md:grid-cols-1 gap-8 place-content-center pt-4">
-        <figure className="max-w-2xl rounded-lg overflow-hidden m-auto">
-          <img
-            className="w-full h-full object-contain object-top"
-            src={menu.url}
-            alt={menu.name}
-          />
-        </figure>
-
-        <section className="max-w-2xl m-auto flex flex-col gap-8">
-          <header className="flex justify-between items-center md:text-center ">
-            <h2 className="text-fourth text-2xl md:text-3xl ">{menu.name}</h2>
+    <div className="grid lg:grid-cols-2 gap-6">
+      <div className="md:static fixed inset-0 -z-50">
+        <img
+          className="zoom-scroll md:rounded"
+          src={menu.url}
+          alt={menu.name}
+        />
+      </div>
+      <div className="md:static absolute inset-0 z-40 flex flex-col">
+        <div className="aspect-video block md:hidden p-4">
+          <Link
+            className="w-10 h-10 rounded-full bg-white flex justify-center items-center"
+            href={"/home"}
+          >
+            <ArrowLeft />
+          </Link>
+        </div>
+        <div className="bg-black/80 backdrop-blur flex-1 p-4 rounded-t-3xl fadeIn">
+          <div className="flex justify-between">
+            <h1 className="text-neutral-200 text-2xl">{menu.name}</h1>
             <AddToFavorite menu={menu} />
-          </header>
-
-          <div>
-            <h3 className="text-fourth mb-2">Descripcion</h3>
-            <p className="text-sm md:text-base text-neutral-400">{menu.description}</p>
-            <p className="text-sm sm:text-base text-neutral-400">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis
-              maxime itaque corporis non labore rerum delectus nobis placeat
-              porro, iste, deleniti nisi est? Laudantium illo architecto mollitia
-              ad, ex laborum. Lorem ipsum dolor sit amet consectetur adipisicing
-              elit.
-            </p>
           </div>
-          <div className="flex gap-3 items-center">
-            <p className="text-neutral-300">Cantidad:</p>
-            <Counter size="large" />
-          </div>
-
-          <div className="flex gap-8">
-            <p className="text-fourth">
-              <span className="block text-xs align-bottom sm:text-base">
-                Precio
-              </span>
-              <span className="pl-3 sm:text-lg">s/{menu.price || 0}</span>
-            </p>
-
+          <p className="text-neutral-400 py-4">{menu.description}</p>
+          <p className="text-neutral-400 py-4">
+            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Corporis
+            quisquam optio eveniet quam ducimus consectetur ea nulla dolor.
+            Expedita aliquam itaque placeat, eveniet esse facere porro laborum
+            tempore ullam facilis.
+          </p>
+          <div className="flex">
             <ButtonAddCart menu={menu} />
           </div>
-        </section>
-      </section>
-    </>
+        </div>
+      </div>
+    </div>
   );
 }
 

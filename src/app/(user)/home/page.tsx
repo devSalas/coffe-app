@@ -1,28 +1,34 @@
-import Search from "../../../components/Home/Search";
+import Search from "@/components/Home/Search";
 import UserCategory from "@/components/UserCategory";
-import CardContainer from "@/components/Home/MenusList";
-import HeaderHome from "@/components/HeaderHome";
+import { getCategories, getMenus } from "@/lib/data";
+import MenuCard from "@/components/Home/MenuCard";
 
 export const metadata = {
   title: "Home",
   description: "Pagina de inicio",
 };
 
-async function Home() {
+export default async function HomePage({
+  searchParams,
+}: {
+  searchParams: { search: string; category: string };
+}) {
+  const search = searchParams.search || "";
+  const category = searchParams.category || "";
+  const menus = await getMenus({ search, category });
+  const categories = await getCategories();
+
   return (
-    <div>
-      <div className="mb-4">
-        {/* <h2 className="text-xl">Bienvenido/a</h2> */}
-      </div>
-      <div className="mb-4 md:mb-8">
-        <Search />
-      </div>
-      <div className="flex gap-4 overflow-hidden md:mb-4">
-        <UserCategory />
-      </div>
-      <CardContainer />
+    <div className="flex flex-col gap-6">
+      <h2 className="text-xl text-neutral-200">Bienvenido/a</h2>
+      <Search />
+      <UserCategory categories={categories} />
+
+      <ul className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+        {menus?.map((menu, i) => (
+          <MenuCard key={menu.id_menu} menu={menu} delay={i} />
+        ))}
+      </ul>
     </div>
   );
 }
-
-export default Home;

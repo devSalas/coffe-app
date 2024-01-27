@@ -4,7 +4,7 @@ import Button from "@/components/ui/Button";
 import Label from "@/components/ui/Label";
 import Input from "@/components/ui/Input";
 import { addCategory } from "@/lib/data";
-import toast, { Toaster } from "react-hot-toast";
+import toast from "react-hot-toast";
 import { useSesion } from "@/global/sesion";
 import Header from "@/components/Admin/Header";
 
@@ -41,7 +41,6 @@ export default function Page() {
           />
         </Label>
         <Button>Crear categoria</Button>
-        <Toaster />
       </form>
     </div>
   );

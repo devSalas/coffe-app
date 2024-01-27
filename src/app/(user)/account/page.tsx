@@ -10,19 +10,19 @@ function Account() {
 
   if (isAuthenticated) {
     return (
-      <>
-        <header className="py-8 flex items-center gap-4">
+      <div className="flex flex-col gap-6">
+        <header className="flex items-center gap-3">
           <img
             className="bg-neutral-700 w-20 h-20 rounded-full"
             src="user-icon.png"
-            alt=""
+            alt="user"
           />
           <div>
-            <h1 className="text-2xl">{user.name}</h1>
-            <p>{user.email}</p>
+            <h1 className="text-neutral-200 text-2xl">{user.name}</h1>
+            <p className="text-neutral-400">{user.email}</p>
           </div>
         </header>
-        <nav className="flex gap-4">
+        <nav className="flex gap-2">
           <button
             className="bg-neutral-500 px-4 py-2 text-white rounded"
             onClick={() => cerrarSesion()}
@@ -38,23 +38,20 @@ function Account() {
             </Link>
           )}
         </nav>
-      </>
+      </div>
     );
   }
 
   return (
-    <div className="sm:flex pt-4">
-      <div className="px-4">
-        <header className="py-8">
-          <h1 className="text-2xl">No has iniciado sesion</h1>
-        </header>
-        <Link
-          className="bg-neutral-500 px-4 py-2 text-white rounded"
-          href={"/login"}
-        >
-          Iniciar Sesion
-        </Link>
-      </div>
+    <div className="flex flex-col items-start gap-3">
+      <h1 className="text-neutral-200 text-2xl">No has iniciado sesion</h1>
+
+      <Link
+        className="bg-neutral-500 px-4 py-2 text-white rounded"
+        href={"/login"}
+      >
+        Iniciar Sesion
+      </Link>
     </div>
   );
 }

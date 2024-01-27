@@ -3,33 +3,38 @@ import React, { useState, useEffect } from "react";
 import Button from "@/components/ui/Button";
 import Label from "@/components/ui/Label";
 import Input from "@/components/ui/Input";
-import { getMenu, getCategories, editMenu } from "@/lib/data";
-import toast, { Toaster } from "react-hot-toast";
+import { getMenuById, getCategories, editMenu } from "@/lib/data";
+import toast from "react-hot-toast";
 import { useSesion } from "@/global/sesion";
 import { useParams } from "next/navigation";
 import Header from "@/components/Admin/Header";
+import { CategoryI } from "@/lib/definitions";
 
 export default function Page() {
-  const [menu, setMenu] = useState({
+  const [menu, setMenu] = useState<any>({
     name: "",
     url: "",
     description: "",
     price: 0,
     category_id: 0,
   });
-  const [categories, setCategories] = useState([]);
+  const [categories, setCategories] = useState<CategoryI[]>([]);
 
   const { token } = useSesion();
   const params = useParams();
   const id = Array.isArray(params) ? params[0].id : params.id;
 
   useEffect(() => {
-    getMenu(id).then((res) => {
-      setMenu(res.data);
+    getMenuById(id).then((res) => {
+      if (res) {
+        setMenu(res);
+      }
     });
 
     getCategories().then((res) => {
-      setCategories(res.data);
+      if (res) {
+        setCategories(res);
+      }
     });
   }, [id]);
 
@@ -51,7 +56,7 @@ export default function Page() {
 
   const handleChange = (e: any) => {
     const { name, value } = e.target;
-    setMenu((prevData) => ({ ...prevData, [name]: value }));
+    setMenu((prevData: any) => ({ ...prevData, [name]: value }));
   };
 
   return (
@@ -113,7 +118,6 @@ export default function Page() {
             </select>
           </Label>
           <Button>Guardar</Button>
-          <Toaster />
         </form>
       </section>
     </>

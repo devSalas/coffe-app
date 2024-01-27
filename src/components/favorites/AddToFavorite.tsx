@@ -2,7 +2,7 @@
 
 import useFavorite from "@/hooks/useFavorite";
 import { MenuI } from "@/lib/definitions";
-import toast, { Toaster } from "react-hot-toast";
+import toast from "react-hot-toast";
 
 interface Props {
   menu: MenuI;
@@ -29,7 +29,6 @@ export default function AddToFavorite({ menu }: Props) {
       className="w-8 h-8 rounded-full aspect-square bg-white flex justify-center items-center"
     >
       {isFavorite(menu.id_menu) ? <HeartOutline /> : <HeartSolid />}
-      <Toaster />
     </button>
   );
 }

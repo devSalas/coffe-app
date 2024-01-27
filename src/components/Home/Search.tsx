@@ -1,30 +1,30 @@
 "use client";
 
-import { useMenu } from "@/global/MenuContext";
-import React from "react";
-import SearchIcon from "../icons/Search";
+import { useRouter, useSearchParams } from "next/navigation";
 
 export default function Search() {
-  const { search } = useMenu();
+  const searchParams = useSearchParams();
+  const router = useRouter();
 
   const handleChange = (e: any) => {
-    let term = e.target.value.trim();
-    search(term);
+    let term = e.target.value;
+    const params = new URLSearchParams(searchParams);
+
+    if (term) {
+      params.set("search", term);
+    } else {
+      params.delete("search");
+    }
+
+    router.replace(`/home?${params}`);
   };
 
   return (
-    <div className="relative">
-      <input
-        onChange={handleChange}
-        type="search"
-        id="search"
-        placeholder="buscar menu preferido ..."
-        className="bg-third text-white w-full rounded-full p-3 pl-12"
-      />
-      <label htmlFor="search" className="absolute left-4 top-0 h-full flex items-center ">
-        <SearchIcon/>
-      </label>
-    </div>
-
+    <input
+      onChange={handleChange}
+      type="search"
+      placeholder="buscar..."
+      className="bg-neutral-800/80 text-white backdrop-blur hover:bg-neutral-800 focus:bg-neutral-800 outline-none w-full rounded-full py-3 px-6"
+    />
   );
 }
