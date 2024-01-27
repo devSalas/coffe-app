@@ -20,7 +20,6 @@ export default async function HomePage({
 
   return (
     <div className="flex flex-col gap-6">
-      <h2 className="text-xl text-neutral-200">Bienvenido/a</h2>
       <Search />
       <UserCategory categories={categories} />
 

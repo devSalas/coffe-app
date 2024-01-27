@@ -3,7 +3,7 @@ import React, { useState, useEffect } from "react";
 import Button from "@/components/ui/Button";
 import Label from "@/components/ui/Label";
 import Input from "@/components/ui/Input";
-import { getCategories, editCategory } from "@/lib/data";
+import { editCategory, getCategoryById } from "@/lib/data";
 import toast from "react-hot-toast";
 import { useSesion } from "@/global/sesion";
 import Header from "@/components/Admin/Header";
@@ -18,10 +18,9 @@ export default function Page() {
   const id = Array.isArray(params) ? params[0].id : params.id;
 
   useEffect(() => {
-    getCategories().then((res) => {
+    getCategoryById(id).then((res) => {
       if (res) {
-        const result = res.find((c: any) => c.id_category === Number(id));
-        setCategory(result);
+        setCategory(res);
       }
     });
   }, [id]);
@@ -32,7 +31,8 @@ export default function Page() {
     const newCategory = {
       name: category.name,
     };
-    await editCategory(id, newCategory, token);
+    const res = await editCategory(id, newCategory, token);
+    console.log(res);
     toast.success("categoria editada");
   };
 

@@ -51,7 +51,7 @@ export default function Modal() {
           cart.length === 0
             ? "bg-neutral-800 text-neutral-500"
             : "bg-second text-white hover:bg-orange-500"
-        } w-full p-3 rounded`}
+        } w-full py-4 px-6 rounded-full`}
         disabled={cart.length === 0}
         onClick={handleClick}
       >

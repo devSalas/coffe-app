@@ -217,6 +217,7 @@ export const editCategory = async (id:string, category:any, token:string): Promi
   };
 
   const res = await fetch(`${URL}/categories/${id}`, opciones);
+  console.log(res)
 
   if (!res.ok) {
     throw new Error("error al editar una categoria");

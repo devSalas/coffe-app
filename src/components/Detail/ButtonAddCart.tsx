@@ -20,7 +20,7 @@ export default function ButtonAddCart({ menu }: { menu: MenuI }) {
   return (
     <button
       onClick={handleclick}
-      className="text-fourth bg-second rounded-lg py-3 text-center grow"
+      className="text-fourth bg-second rounded-full py-4 px-6 text-center grow"
     >
       Agregar a carrito
     </button>

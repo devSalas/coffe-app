@@ -10,21 +10,28 @@ interface Props {
 function CardMenu({ menu, delay }: Props) {
   return (
     <li
-      className="relative aspect-video rounded-xl overflow-hidden fadeIn"
+      className="relative aspect-[4/3] rounded-3xl overflow-hidden fadeIn"
       style={{ animationDelay: `0.${delay}s` }}
     >
       <Link href={`/detail/${menu.id_menu}`}>
         <img
-          className="object-cover w-full h-full hover:scale-105 transition-transform"
+          className="object-cover w-full h-full hover:scale-105 transition-transform ease-in-out duration-300"
           src={menu.url}
           alt={menu.name}
         />
         <section className="bg-neutral-900 absolute bottom-0 inset-x-0 p-3">
-          <h4 className="text-neutral-200">{menu.name}</h4>
-          <p className="text-neutral-400">S/ {menu.price}</p>
+          <h4 className="text-neutral-200 text-lg capitalize mb-2">
+            {menu.name}
+          </h4>
+          <p className="text-neutral-300">S/ {menu.price}</p>
+          <div className="flex justify-end">
+            <button className="bg-orange-500 text-white px-4 py-2 rounded-full">
+              Ordenar
+            </button>
+          </div>
         </section>
       </Link>
-      <div className="absolute bottom-5 right-5">
+      <div className="absolute top-2 right-2">
         <AddToFavorite menu={menu} />
       </div>
     </li>

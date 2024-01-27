@@ -3,7 +3,6 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { links } from "./links";
-import Logo from "./icons/Logo";
 
 function Navbar() {
   const pathname = usePathname();
@@ -12,16 +11,12 @@ function Navbar() {
     <>
       {/* desktop */}
       <header className="hidden md:block fixed inset-y-0 left-0 z-50 w-60">
-        <div className="flex flex-col gap-6 px-10 py-6">
-          <h1 className="text-xl text-second flex items-end gap-2">
-            <Logo /> Coffe App
-          </h1>
-
+        <div className="flex flex-col gap-6 px-10 pt-20">
           <nav className="flex flex-col">
             {links.map((link, i) => (
               <Link
                 key={i}
-                className={`flex items-center gap-3 py-3 hover:text-second ${
+                className={`flex items-center gap-3 py-3 px-6 hover:text-second transition-colors ${
                   pathname === link.href ? "text-second" : "text-neutral-500"
                 }`}
                 href={link.href}

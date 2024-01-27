@@ -32,7 +32,7 @@ export default function Cart() {
           </ul>
         </article>
 
-        <article className="flex flex-col gap-4">
+        <article className="flex flex-col gap-6">
           <h2 className="text-neutral-200 text-2xl">Resumen</h2>
           <div className="flex justify-between text-neutral-300">
             <h3>Subtotal</h3>
@@ -46,7 +46,9 @@ export default function Cart() {
             <h3>Total</h3>
             <span>S/{totalPrice || 0}</span>
           </div>
-          <Modal />
+          <div className="py-3">
+            <Modal />
+          </div>
         </article>
       </section>
     </>

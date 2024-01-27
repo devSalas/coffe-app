@@ -22,7 +22,7 @@ function UserCategory({ categories }: { categories: CategoryI[] | null }) {
         href={`/home`}
         className={`bg-${
           searchParams.getAll("category").length === 0 ? "second" : "third"
-        } text-fourth py-1 px-4 rounded-full`}
+        } text-fourth py-2 px-6 rounded-full`}
       >
         all
       </Link>
@@ -32,7 +32,7 @@ function UserCategory({ categories }: { categories: CategoryI[] | null }) {
           href={`?category=${name}`}
           className={`bg-${
             searchParams.get("category") === name ? "second" : "third"
-          } text-fourth py-1 px-4 rounded-full`}
+          } text-fourth py-2 px-6 rounded-full`}
         >
           {name}
         </Link>

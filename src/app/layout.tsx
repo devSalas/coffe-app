@@ -1,10 +1,8 @@
 import type { Metadata } from "next";
-import { Poppins } from "next/font/google";
+import { PoppinsFont } from "./fonts";
 import "./globals.css";
 import { SesionProvider } from "@/global/sesion";
 import { Toaster } from "react-hot-toast";
-
-const poppins = Poppins({ subsets: ["latin"], weight: ["200", "400"] });
 
 export const metadata: Metadata = {
   title: {
@@ -22,7 +20,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="es">
-      <body className={poppins.className}>
+      <body className={PoppinsFont.className}>
         <SesionProvider>{children}</SesionProvider>
         <Toaster />
       </body>
