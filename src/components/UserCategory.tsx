@@ -7,17 +7,8 @@ import { useSearchParams } from "next/navigation";
 function UserCategory({ categories }: { categories: CategoryI[] | null }) {
   const searchParams = useSearchParams();
 
-  /* if (categories.length === 0)
-    return (
-      <>
-        <div className="bg-neutral-600 h-8 w-16 rounded-full animate-pulse"></div>
-        <div className="bg-neutral-600 h-8 w-16 rounded-full animate-pulse"></div>
-        <div className="bg-neutral-600 h-8 w-16 rounded-full animate-pulse"></div>
-      </>
-    ); */
-
   return (
-    <div className="flex gap-2 overflow-x-scroll">
+    <div className="flex gap-2 overflow-x-auto">
       <Link
         href={`/home`}
         className={`bg-${
