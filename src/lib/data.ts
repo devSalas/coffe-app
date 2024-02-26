@@ -67,7 +67,7 @@ export const verifyToken = async (token: string) => {
 
 /* menus */
 export const getMenus = async ({search, category}: {search?:string, category?:string}): Promise<MenuI[] | null> => {
-    const res = await fetch(`${URL}/menus`, {next:{revalidate:3600}});
+    const res = await fetch(`${URL}/menus`, {cache:"no-store"});
 
     if (!res.ok) {
       throw new Error("error al obtener los menus");
@@ -95,7 +95,7 @@ export const getMenus = async ({search, category}: {search?:string, category?:st
 };
 
 export const getMenuById = async (idMenu: string): Promise<MenuI | null> => {
-    const res = await fetch(`${URL}/menus/${idMenu}`, {next:{revalidate:3600}});
+    const res = await fetch(`${URL}/menus/${idMenu}`, {cache:"no-store"});
 
     if (!res.ok) {
       throw new Error("error al obtener los menus");
@@ -166,7 +166,7 @@ export const deleteMenu = async (menuId:string, token:string): Promise<any> => {
 
 /* categories */
 export const getCategoryById = async (id: string): Promise<CategoryI | null> => {
-    const res = await fetch(`${URL}/categories/${id}`, {next:{revalidate:3600}});
+    const res = await fetch(`${URL}/categories/${id}`, {cache:"no-store"});
 
     if (!res.ok) {
       throw new Error("error al obtener la categoria");
@@ -177,7 +177,7 @@ export const getCategoryById = async (id: string): Promise<CategoryI | null> => 
 };
 
 export const getCategories = async (): Promise<CategoryI[] | null> => {
-    const res = await fetch(`${URL}/categories`, {next:{revalidate:3600}});
+    const res = await fetch(`${URL}/categories`, {cache:"no-store"});
 
     if (!res.ok) {
       throw new Error("error al obtener las categorias");
