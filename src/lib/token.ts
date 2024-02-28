@@ -7,12 +7,18 @@ export const guardarToken = (token: string) => {
 export const recuperarToken = () => {
   const data = localStorage.getItem(KEY);
 
-  if (data === null) {
+  if (!data) {
     return null;
   }
-
-  const token = JSON.parse(data);
-  return token;
+  
+  try {
+    const token = JSON.parse(data);
+    console.log(token); // Registrar el token en la consola (para depuración)
+    return token; // Devolver el token parseado
+  } catch (error) {
+    console.error('Error al analizar el token:', error);
+    return null; // Manejar errores de análisis y devolver null
+  }
 };
 
 export const eliminarToken = () =>{
