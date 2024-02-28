@@ -10,8 +10,8 @@ function Navbar() {
   return (
     <>
       {/* desktop */}
-      <header className="hidden md:block fixed inset-y-0 left-0 z-50 w-60">
-        <div className="flex flex-col gap-6 px-10 pt-20">
+      <header className="hidden md:block  inset-y-0 left-0 z-50 w-60">
+        <div className="flex flex-col gap-6 ">
           <nav className="flex flex-col">
             {links.map((link, i) => (
               <Link

@@ -21,7 +21,7 @@ export default async function MenuPage({ params }: { params: { id: string } }) {
   if (!menu) return <div></div>;
 
   return (
-    <div className="flex flex-col gap-6">
+    <div className="flex flex-col gap-6 max-w-2xl m-auto">
       <div className="md:static fixed inset-0 z-40">
         <img
           className="zoom-scroll md:rounded-3xl md:h-96 md:w-full object-cover"
@@ -29,8 +29,7 @@ export default async function MenuPage({ params }: { params: { id: string } }) {
           alt={menu.name}
         />
       </div>
-      <section className="grid grid-cols-2 gap-12 max-w-5xl mx-auto">
-        <div className="md:static absolute top-0 inset-x-0 z-50">
+      <div className="md:static absolute top-0 inset-x-0 z-50">
           {/* espacio en blanco */}
           <article className="aspect-video block md:hidden p-4">
             <Link
@@ -41,7 +40,7 @@ export default async function MenuPage({ params }: { params: { id: string } }) {
             </Link>
           </article>
           {/* contenido */}
-          <section className="bg-black/80 backdrop-blur p-4 rounded-t-3xl fadeIn pb-24">
+          <section className="bg-black/80 backdrop-blur p-4 rounded-t-3xl fadeIn pb-24 md:pb-0">
             <article>
               <div className="flex justify-between gap-4">
                 <h1 className="text-neutral-200 text-2xl">{menu.name}</h1>
@@ -59,14 +58,12 @@ export default async function MenuPage({ params }: { params: { id: string } }) {
             </article>
           </section>
         </div>
-        {/* boton */}
         <article className="md:static fixed bottom-0 inset-x-0 z-50 flex flex-col bg-black">
           <div className="flex items-center gap-4 p-4">
             <p className="text-neutral-400 text-xl">S/{menu.price}</p>
             <ButtonAddCart menu={menu} />
           </div>
         </article>
-      </section>
     </div>
   );
 }

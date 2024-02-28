@@ -10,7 +10,7 @@ interface Props {
 function CardMenu({ menu, delay }: Props) {
   return (
     <li
-      className="relative aspect-[4/3] rounded-3xl overflow-hidden fadeIn"
+      className="relative aspect-[4/3] rounded-xl overflow-hidden fadeIn"
       style={{ animationDelay: `0.${delay}s` }}
     >
       <Link href={`/detail/${menu.id_menu}`}>
@@ -23,8 +23,8 @@ function CardMenu({ menu, delay }: Props) {
           <h4 className="text-neutral-200 text-lg capitalize mb-2">
             {menu.name}
           </h4>
-          <p className="text-neutral-300">S/ {menu.price}</p>
-          <div className="flex justify-end">
+          <div className="flex justify-between items-end">
+          <p className="text-neutral-300 md:text-2xl">S/ {menu.price}</p>
             <button className="bg-orange-500 text-white px-4 py-2 rounded-full">
               Ordenar
             </button>

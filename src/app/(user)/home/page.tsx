@@ -19,11 +19,11 @@ export default async function HomePage({
   const categories = await getCategories();
 
   return (
-    <div className="flex flex-col gap-6">
+    <div className="flex flex-col gap-7 ">
       <Search />
       <UserCategory categories={categories} />
 
-      <ul className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+      <ul className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
         {menus?.map((menu, i) => (
           <MenuCard key={menu.id_menu} menu={menu} delay={i} />
         ))}

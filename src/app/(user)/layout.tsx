@@ -9,10 +9,13 @@ export default function layout({ children }: { children: React.ReactNode }) {
     <CartProvider>
       <FavoriteProvider>
         <CounterProvider>
-          <main className="md:pl-60 py-20 min-h-screen md:pr-10">
+          <main className="p-8 mb-16 sm:mb-0 min-h-screen  max-w-7xl m-auto flex flex-col">
             <HeaderHome />
-            <Navbar />
-            <div className="md:px-6 px-3">{children}</div>
+            <div className="sm:flex">
+              <Navbar />
+              <div className="w-full">{children}</div>
+
+            </div>
           </main>
         </CounterProvider>
       </FavoriteProvider>

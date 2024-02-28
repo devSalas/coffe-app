@@ -8,7 +8,7 @@ function Favorite() {
   const { favorites } = useFavorite();
 
   return (
-    <div className="flex flex-col gap-3">
+    <div className="favorito sm:flex sm:flex-col  sm:gap-3 w-full">
       <h2 className="text-2xl text-neutral-200">Comidas Favoritas</h2>
       <ul className="grid lg:grid-cols-2 gap-3">
         {favorites.length > 0 ? (
