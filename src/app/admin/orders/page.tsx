@@ -1,3 +1,4 @@
+
 "use client";
 
 import React, { useState, useEffect } from "react";
@@ -15,11 +16,13 @@ export default function Page() {
   useEffect(() => {
     getOrders().then((res) => {
       if (res) {
-        setOrders(res);
+        setOrders(res.data);
       }
     });
   }, []);
 
+  if(orders.length <= 0 ) return <div>carganod</div>
+  
   return (
     <div>
       <Header title="Ordenes" />
@@ -38,7 +41,7 @@ export default function Page() {
             </tr>
           </thead>
           <tbody>
-            {orders.map(
+            {orders?.map(
               ({
                 id_order,
                 menu,
@@ -72,7 +75,7 @@ export default function Page() {
       </section>
       <section className="md:hidden">
         <ul className="flex flex-col gap-4">
-          {orders.map(
+         {/*  {orders.map(
             (
               {
                 id_order,
@@ -105,7 +108,7 @@ export default function Page() {
                 </p>
               </li>
             )
-          )}
+          )} */}
         </ul>
       </section>
     </div>
