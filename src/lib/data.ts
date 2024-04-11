@@ -256,7 +256,8 @@ export const getOrders = async (): Promise<OrderI[] | null> => {
     }
 
     const data = await res.json();
-    return data;
+    
+    return data.data;
 };
 
 
